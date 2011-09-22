@@ -1,0 +1,241 @@
+% Define document class. Important.
+\documentclass[a4paper,twoside,openright]{report}
+
+% Margener
+%\setlength{\evensidemargin}{1cm}
+%\setlength{\oddsidemargin}{1cm}
+
+% Set up encoding. Latin1 since UTF-8 is fuckably difficult to work with.
+\usepackage[latin1]{inputenc}
+
+% Load up bibliography.
+\usepackage{natbib}
+% Bibliography style.
+\bibliographystyle{plain}
+
+% Algorithm support.
+\usepackage{algorithmic}
+\usepackage{algorithm}
+% Make algorithms appear as procedures instead.
+\floatname{algorithm}{Procedure}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+
+% Image frames.
+\setlength{\fboxsep}{0pt}
+\setlength{\fboxrule}{0.5pt}
+
+% Also, images.
+\usepackage{graphicx}
+
+% Todo notes here and there.
+\usepackage[disable]{todonotes}
+
+% Forbedrede floats.
+\usepackage{float}
+
+% Special symbols availability.
+\usepackage{amssymb}
+
+% CODE %
+\usepackage{listings}
+\usepackage{color}
+\definecolor{gray}{rgb}{0.4,0.4,0.4}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.6}
+\definecolor{cyan}{rgb}{0.0,0.6,0.6}
+\lstset{
+  basicstyle=\ttfamily,
+  columns=fullflexible,
+  showstringspaces=false,
+  commentstyle=\color{gray}\upshape,
+  basicstyle=\small,
+  numberstyle=\footnotesize,
+  numbers=left,
+  captionpos=b,
+  stepnumber=1,
+  numbersep=10pt,
+  tabsize=2,
+  breaklines=true,
+}
+% Define markup of XML
+\lstdefinelanguage{XML}
+{
+  morestring=[b]",
+  morestring=[s]{>}{<},
+  morecomment=[s]{<?}{?>},
+  identifierstyle=\color{darkblue},
+  keywordstyle=\color{cyan},
+  morekeywords={id, target, type, category, value, point, correct, rows, width, time}% list your attributes here
+}
+% Define markup of C#
+\lstdefinelanguage{CSharp}[Visual]{C++}
+{
+	identifierstyle=\color{darkblue},
+	commentstyle=\color{green!70!black}\itshape ,
+	stringstyle=\color{gray},
+	sensitive=true,
+	morestring=[b]",
+	morestring=[b]',
+	morecomment=[l]//,
+	morecomment=[n]{/*}{*/}
+}
+
+% Neat-o referencer...o.
+\usepackage{hyperref}
+\usepackage{nameref}
+
+% hack fra nettet.
+% http://tex.stackexchange.com/questions/1230/reference-name-of-description-list-item-in-latex
+\makeatletter
+\let\orgdescriptionlabel\descriptionlabel
+\renewcommand*{\descriptionlabel}[1]{%
+  \let\orglabel\label
+  \let\label\@gobble
+  \phantomsection
+  \edef\@currentlabel{#1}%
+  %\edef\@currentlabelname{#1}%
+%  \let\label\orglabel
+  \orgdescriptionlabel{#1}%
+}
+\makeatother
+% Rettehak. Meget lettere end \checkmark
+\newcommand{\yes}{\checkmark}
+
+% Let's put in a lot of niceness in the display, yeh?
+\usepackage{fancyhdr} % Get some niceness into our headers.
+\pagenumbering{arabic} % Ensure page numbering in our desired form.
+\pagestyle{fancy}
+% Page design from fancyhdr.
+\fancyhead{}
+\fancyfoot{}
+\fancyhead[RO,LE]{\leftmark\\\rightmark}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{23pt}
+% Rewrite header and footer commands.
+\renewcommand{\headrulewidth}{1.0pt}
+\renewcommand{\footrulewidth}{1.0pt}
+
+% Create a new command, HRule, to insert some nice horisontal rules on the title page.
+\newcommand{\HRule}{\rule{\linewidth}{0.3mm}}
+
+% New command for two figures, side by side.
+\newcommand{\twofigs}[6]
+{
+	\begin{figure}[H]
+		\begin{minipage}[b]{0.5\columnwidth}
+		\centering\fbox{\includegraphics[width=0.8\columnwidth]{img/#1}}\caption{#2\label{#3}}
+		\end{minipage}
+		\hspace{0.5cm}
+		\begin{minipage}[b]{0.5\columnwidth}
+		\centering\fbox{\includegraphics[width=0.8\columnwidth]{img/#4}}\caption{#5\label{#6}}
+		\end{minipage}	\end{figure}
+}
+
+% Sørg for at paragrafplads ikke spildes.
+\raggedbottom
+
+\begin{document}
+
+\input{tex/frontpage}
+
+\newpage
+\thispagestyle{empty}
+\mbox{}
+
+% Titelblad
+\input{tex/titelblad}
+
+\newpage
+\thispagestyle{empty}
+\mbox{}
+
+\input{tex/signatures}
+
+\newpage
+\thispagestyle{empty}
+\mbox{}
+%\fancyhead{}
+%\fancyfoot{}
+%\fancyhead[RO,LE]{\leftmark\\\rightmark}
+%\fancyfoot[C]{\thepage}
+%\setlength{\headheight}{23pt}
+
+
+% Fjern headeren for indholdsfortegnelsen.
+%\fancyhead{}
+%\fancyfoot{}
+%\fancyhead[RO,LE]{\leftmark}
+%\fancyfoot[C]{\thepage}
+%\setlength{\headheight}{23pt}% Indholdsfortegnelser etc.
+% Dybde for visning af niveauer.
+% Dybde af niveaut�lling generelt.
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{1}
+
+
+
+\tableofcontents
+% Inds�t indholdet her med \input{filnavn}
+% 1. Introduktion & analyse
+%\part{Problems}
+\input{tex/foreword}
+\input{tex/problem_analysis}
+\input{tex/interview}
+\input{tex/foranalyse}
+\input{tex/problem_statements}
+\input{tex/problem_limitations}
+
+% 2. Teori om program
+%\part{Analysis}
+%\input{tex/persondataloven}
+\input{tex/usability}
+% Var det file format i snakkede om skulle ud?
+% Lige det jeg kiggede igennem s� det ud til at v�re lidt af det samme som i program specifikation 
+\input{tex/program_specification}
+\input{tex/file_format}
+
+% 3. Implemetation
+\input{tex/software_architecture}
+\input{tex/program_user_interface}
+\input{tex/container}
+\input{tex/bl_serialization}
+\input{tex/bl_xsl}
+\input{tex/graph_theory}
+
+% Slutning af program, test, install osv.
+% \input{tex/unittest}
+\input{tex/deployment}
+% \input{tex/usermanual}
+
+\input{tex/conclusion}
+\input{tex/perspective}
+
+\listoffigures
+\lstlistoflistings
+\label{lastpage}
+
+
+
+
+% Change headings for bibliography. Looks fucked otherwise, I think.
+% Page design from fancyhdr.
+\fancyhead{}
+\fancyfoot{}
+\fancyhead[RO,LE]{\leftmark}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{23pt}
+
+% Afslut med bibliografien
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliography{bib/bibliografi}
+
+% 4. Bilag
+\appendix{}
+
+\input{tex/interview-bilag}
+\input{tex/appendix_xsl}
+
+\end{document}
+
