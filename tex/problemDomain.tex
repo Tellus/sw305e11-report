@@ -1,13 +1,15 @@
 \chapter{Modeling}
 
 \section{Problem domain}
+----skal laves om-----
+
 For this analysis we will follow the Object Oriented Analysis of the problem domain approach. We have made an event table to better understand what we need in our program and from that we have made a class diagram and state diagram. This give an overview of what we would have to implement in our program and the class diagram describe, how the base model would look like. 
 
 \subsection{Event table}
 To do the event table, see figur \vref{fig:event_table}, we came up with potential classes in the problem domain and events that would happen in the application domain. First all the potential classes was written down and then we evaluated each class with meant that some classes was abandoned. One of classes that were abandoned the Autistic Child because in the model it is the child's mobile device that identifies the child and thereby the class Autistic Child was redundant. Classes such as Application and specific applications were used in the table because of the \textbf{system definition} %(check at det passer senere)
 system definition to e.g. be able edit the settings or make events in the calendar. Archives and specific archives were added because the use of PECS is essential for at least two applications and they will be stored in categories such that the parents quickly would be able to find the wanted PECS. On the mobile device a database would be installed from which the program's for the child is installed and therefore the database is also important.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 	\centering
 		\includegraphics[width=1.0\textwidth]{img/event_table.png}
 	\caption{event table }
@@ -25,7 +27,7 @@ After the event table completion we made a class diagram that shows how the clas
 
 
 There is also an association between the applications and the archives because the programs should be able to use the contents of the archives. E.g. DigiPECS should be able to use and edit pictures, recordings and PECS units while aSchedule only should be able to use PECS units. The database contains the application which the child can use and therefore is a composition for non or more applications.
-\begin{figure}[h]
+\begin{figure}[ht]
 	\centering
 		\includegraphics[width=1.00\textwidth]{img/class_diagram.jpg}
 	\caption{class diagram}
@@ -37,7 +39,7 @@ There is also an association between the applications and the archives because t
 In a state diagram it is shown how a class behaves, we have made a state diagram for the most important classes. For all the applications its general behavior is that it can edit the setting, enable and disable the applications on the mobile device in a time period. 
 
 \subsubsection{Contact book}
-\begin{figure}[h]
+\begin{figure}[ht]
 	\centering
 		\includegraphics[width=0.75\textwidth]{img/contact_book.jpg}
 	\caption{state diagram of the contact book}
@@ -47,7 +49,7 @@ In a state diagram it is shown how a class behaves, we have made a state diagram
 First the class Contact book's behavior(see \vref{fig:contact_book}) starts with its installation and it is able to run in two modes the child running mode where the guardians' and the child can see the pictures and the story to talk about it.  The other mode is only for the guardian and kindergarten teacher who would be able to send and receive messages or stories with pictures about the child e.g. about the child's day or a message saying that the child is ill today. The guardian or kindergarten teacher would have to make a new message or edit another and add pictures to it, before sending it. The behavior ends when the user uninstall it (skal revideres).  
 
 \subsubsection{aSchedule}
-\begin{figure}[h]
+\begin{figure}[ht]
 	\centering
 		\includegraphics[width=0.75\textwidth]{img/aSchedule.jpg}
 	\caption{state diagram of the aSchedule}
@@ -57,7 +59,7 @@ First the class Contact book's behavior(see \vref{fig:contact_book}) starts with
 Another class is the aSchedule(see \vref{fig:aSchedule}) after the installation its behavior is primarily to make, edit and delete events in the calendar and it also have the general behavior. 
 
 \subsubsection{DigiPECS}
-\begin{figure}[h]
+\begin{figure}[ht]
 	\centering
 		\includegraphics[width=0.75\textwidth]{img/digiPECS.jpg}
 	\caption{state diagram of the DigiPECS}
