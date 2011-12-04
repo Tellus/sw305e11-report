@@ -1,6 +1,6 @@
 \section{Prototypes}
 There were used different prototypes to decide, how this program should interact with the user and how the user interface should look like in the end. In this section three different prototypes will be shown and the work process and decision making will be explained.
-The first prototypes were drawings on a blackboard or a piece of paper but later we also had an HTML prototype. In this process 2-3 group members made the first design and the presented it to the group which when came with point of improvements which then was discussed and then a new prototype was made until the design was satisfactory. The HTML prototype was also shown to the kindergarten teacher Kristine in the second interview which has summarized in \vret{firstInterviewBirken2}.
+The first prototypes were drawings on a blackboard or a piece of paper but later we also had an HTML prototype. In this process 2-3 group members made the first design and the presented it to the group which when came with point of improvements which then was discussed and then a new prototype was made until the design was satisfactory. The HTML prototype was also shown to the kindergarten teacher Kristine in the second interview which has summarized in \vref{InterviewBirken2}.
 
 \subsection{The first prototypes}
 After the first prototype was presented each page was drawn on to the blackboard where the changes easier were added. One of the first blackboard designs of the page change settings of a child which is e.g. the child's name and abilities is shown in Figure \vref{fig:firstProto}. This is a primitive design with two menus one horizontal and one vertical, where the horizontal has all children and groups of children and the vertical has all the applications on a child's device the user can administer. This menu will be further explained for the next prototype. 
@@ -37,13 +37,13 @@ As shown in Figure \vref{fig:contactbook} the Giraf applications' administrators
 
 
 \subsubsection{Evaluation of the HTML prototype}
-In the second interview in \vref{firstInterviewBirken2} with Kristine from Birken we introduced the HTML prototype to her. In general she thought that it was a nice design and she commented that the icon for a child should be a photo of the child instead, which also was indented. She also missed a way to make a reply to a message which would be useful since it is used both by the parents and kindergarten teachers. Kristine said: "[communication] \textit{It goes in both directions. The parents write in the contact book in the morning and we write during the afternoon which then can result in a longer dialog between the parties.}" from the interview in \vref{firstInterviewBirken2}. The reply function was then included during the implementation. 
+In the second interview in \vref{InterviewBirken2} with Kristine from Birken we introduced the HTML prototype to her. In general she thought that it was a nice design and she commented that the icon for a child should be a photo of the child instead, which also was indented. She also missed a way to make a reply to a message which would be useful since it is used both by the parents and kindergarten teachers. Kristine said: "[communication] \textit{It goes in both directions. The parents write in the contact book in the morning and we write during the afternoon which then can result in a longer dialog between the parties.}" from the interview in \vref{InterviewBirken2}. The reply function was then included during the implementation. 
 
 She tried to create a new massage and wondered if there was a spelling checker, that would detect misspellings and she would like there to be one. However, we think this to be a minor issue that could be implemented later. 
 
-She saw two versions of the contact book the first could have several pictures and text while the other had some text and only one picture was the message see Figure \vref{fig:createmessage}. She said: "\textit{both can work - because what we do when we are on a trip and add pictures is that we always write something to the picture, but also some general information about the day's events. ... What I think that you somehow can separate the text}" from the interview in \vref{firstInterviewBirken2}. This functionality was added in the contact book during implementation, where each picture can have some text add with it and a text field for the general information about the day. 
+She saw two versions of the contact book the first could have several pictures and text while the other had some text and only one picture was the message see Figure \vref{fig:createmessage}. She said: "\textit{both can work - because what we do when we are on a trip and add pictures is that we always write something to the picture, but also some general information about the day's events. ... What I think that you somehow can separate the text}" from the interview in \vref{InterviewBirken2}. This functionality was added in the contact book during implementation, where each picture can have some text add with it and a text field for the general information about the day. 
 
-\begin{figure}[ht]
+\begin{figure}
 	\centering
 		\includegraphics[width=1.00\textwidth]{img/createmessage.png}
 	\caption{create message}
@@ -63,7 +63,7 @@ After the interview we also wanted to have a start page with general information
 \subsection{The last paper prototype}
 In the last primitive paper prototype of the design the menu has change to two vertical menu, where the user need to click on an application, a child and then press a go-button to get the application for a or all children. This is shown in the Figure \vref{fig:calendar} in which the application aSchedule's administrator for Jack is called, however we never implemented an administrator module for aSchedule. When this design was evaluated we thought it would be easier to understand and implement if the user should choose a child or a group of children first and then choose an application, because the applications' administrator depends on the installed applications on the child's device. The go-button was not necessary and was abandoned, while the button Settings was also abandoned as mentioned earlier.
 
-\begin{figure}[ht]
+\begin{figure}
 	\centering
 		\includegraphics[width=1.00\textwidth]{img/calendar.jpg}
 	\caption{calendar}
@@ -72,7 +72,7 @@ In the last primitive paper prototype of the design the menu has change to two v
 
   
 In the top-left corner of the prototype is the homepage button which page should contain general information and news from the kindergarten, this was one of the changes made as a result of the interview with Kristine. In the top-right corner should be a logout button and My Account button, which leads to the personal information that is show in Figure \vref{fig:myAccount}. 
-\begin{figure}[ht]
+\begin{figure}
 	\centering
 		\includegraphics[width=1.00\textwidth]{img/myAccount.jpg}
 	\caption{Design of My Account}
