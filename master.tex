@@ -48,25 +48,29 @@
 
 % kapitel systemdefinition
 \input{tex/sys_bat_contactbook}
-\input{tex/uifunctions.tex}
+
 
 % 2. Teori om program
 \part{Design}
 %kapitel med teori
-\input{tex/usability}
+\input{tex/usability} %skal evt flyttes til evalution
 %kapitel med design
 \input{tex/chap_model}
+\input{tex/uifunctions.tex}
 \input{tex/prototypes}
 
-
-
-
-\todo{Still to be planned}
 
 % 3. Implemetation
 \part{Implementation}
 \todo{Still to be planned}
+%
+\part{Evaluation of the program}
+\todo{Still to be planned}
 
+\part{Conclusion}
+\todo{Still to be planned}
+
+\addcontentsline{toc}{part}{Listings}
 \listoffigures
 \lstlistoflistings
 \label{lastpage}
@@ -80,15 +84,18 @@
 \setlength{\headheight}{23pt}
 
 % Afslut med bibliografien
+
 \cleardoublepage
 \phantomsection
-\addcontentsline{toc}{chapter}{Bibliography}
+\addcontentsline{toc}{part}{Bibliography}
 \bibliography{bib/bibliografi}
 
 % 4. Bilag
 \appendix{}
+\addcontentsline{toc}{part}{Appendix}
 \input{tex/appendix_interview}
 \input{tex/interview_1}
+\input{tex/interview_2}
 
 \end{document}
 
