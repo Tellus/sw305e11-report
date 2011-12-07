@@ -1,0 +1,59 @@
+\documentclass[12pt]{article}
+\begin{document}
+\section*{Designing GIRAFAdmin - view()}
+
+\subsection*{Intro}
+In this section we explain our thought on designing the visual part of GIRAFAdmin. We wanted to create a simple and pleasant design for the user and it was crucial that the design was intuitive to use, as the user may not be experienced with computers. 
+
+
+\subsection*{Technology}
+To create our design for GIRAFAdmin we have used CSS to style an HTML framework. The decision to use CSS was clear as CSS offers a simple and easy way to edit our design, as every page uses the same CSS-document through classes and IDs. Classes and IDs can be assigned to several objects in HTML, such as pictures, tables, divs and even text. An example of styling a div in CSS could look like this. 
+
+\begin{verbatim}
+#mainwindow {	
+ width: 600px;
+ height: 400px;
+ background-color: #22042F;
+ border: 2px solid #FF0044;
+}
+\end{verbatim}
+
+
+\subsection*{Main concept}
+In our first draft we agreed on giving to user 2 ways to reach the wanted page. This resulted in having 2 axes, one containing the children and the other containing the applications. 
+
+%Insert image of table
+%Needs preamble \usepackage{multirow} !
+
+
+This resulted in a vertical list containing two tabs. The user would view the tab containing the list of either the children or the list of the applications. Selecting a subject on the list would produce a new horizontal list containing the opposite subjects. A combination of these two subject would produce the relevant information for that specific child and application.
+The children's list contained a ``General`` icon which enabled the option of managing more than one tablet, for instance creating an entry in the calendar. 
+
+%image of first design
+
+After a couple of revisions we decided to remove to horizontal list and simply have a double list, containing the full list of children and applications the user were authorized to view. 
+
+%image of final design
+
+Our final design consists of the following boxes:
+\begin{itemize}
+ \item The header contains the logo, a profile picture of the user and two buttons, a My Account window and a log out function.
+ \item The menu consists of two lists, one for children and one for applications. The children's list contains pictures of each child, whereas the application's list contains icons. 
+ \item The window is the main box for content. This window allows the user to edit and manage applications settings. For a specific application layout is designed by the developer of the application.
+ \item The bottom bar, which is a measure of last resort if everything else fails. It is discrete, but always available for the user. It contains a phone number and an e-mail for the user to contact support.
+\end{itemize}
+
+
+\subsection*{Aesthetics}
+Throughout our design, we have only used a few colors to keep a simple theme:
+\begin{itemize}
+ \item The main color is the orange color, which is used for the header and bottom bar. These are static boxes and does not change.
+ \item The white color is used for areas, which contains text. This is mainly the window, but also present in other windows, such as the ``My Account`` pop-up.
+ \item The background is a dark gray as it is comfortable to view and removes focus from the background. 
+\end{itemize}
+
+The gestalt laws comply as the law of proximity where related objects are grouped together. An example of this is the menu, where the two lists are easily identified and separated. The law of similarity comes in to action in the notebook, where each entry is almost identical to one another.
+
+
+\end{document}
+
