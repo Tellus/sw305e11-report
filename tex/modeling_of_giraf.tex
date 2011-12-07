@@ -1,7 +1,8 @@
 \section{Modeling of Giraf administration}
-To model the Giraf administration program a class diagram was made, see Figure \vref{fig:classOversigt}. This give an overview of what we would have to implement in our program and the class diagram describe, how the base model would look like. The Giraf administration needs a user before it can get all the Giraf administration applications that the user can administer. In the model three different persons is important to remember the child and the users who can be either a parent or a kindergarten teacher. The user needs to have a connection with a child and the child's mobile device before the Giraf administration can detect which Giraf mobile applications the device has and then foreach Giraf mobile application finds the Giraf application administrator. The difference on the two Giraf administration applications is that the Giraf application administrator would have a connection to the application on a device e.g. DigiPECS or aSchedule, while User application only is accessible in the Giraf administration.
+To be able to view the Giraf administration system as a model, a class diagram was made, see figure \vref{fig:classOversigt}. This gives an overview of what we have to implement in our program and the class diagram describes how the base model would look like. Before the Giraf administration system gets requested applications to administer, the system needs a user. In the model there are three different individuals, the child and the users of the system, either a parent or a kindergarten teacher. To detect which Giraf mobile applications a child's device has, a user must have a connection to the child. The difference between the Giraf administration system and the administration application is that the application has access to settings for each application on the device e.g. DigiPECS or aSchedule, whereas all applications, their settings and the device's settings are all accessible from the Giraf administration system.
+\pagebreak
 
-\begin{figure}[ht]
+\begin{figure}[!ht]
 	\centering
 		\includegraphics[width=1.00\textwidth]{img/classOversigt.jpg}
 	\caption{Giraf administration program}
