@@ -35,48 +35,77 @@
 
 % 1. Introduktion & analyse
 \part{Analysis}
-%kapitel introduction
-\input{tex/chapter_introduction}
-\input{tex/Autistic_Children}
-\input{tex/communication}
 
-%kapitel problem analyse
-\input{tex/multiproject}
-\input{tex/guardians(2)}
-\input{tex/Illustration}
+\input{tex/analysis/chapter_introduction}
+\input{tex/analysis/Autistic_Children}
+\input{tex/analysis/communication}
 
-% kapitel systemdefinition
-\input{tex/sys_bat_contactbook}
+\input{tex/analysis/multiproject}
+\input{tex/analysis/guardians(2)}
+\input{tex/analysis/Illustration}
+
+\input{tex/analysis/sys_bat_contactbook}
 
 
-% 2. Teori om program
-\part{Design}
+% 2. Designing the product
+\part{Designing the product}
 
-%kapitel OOAskal have klassediagram OOA
-\input{tex/chapter_desintro}
-\input{tex/modeling_of_giraf}
-\input{tex/uifunctions}
-%kapitel med design OOD
-\input{tex/chapter_designl}
-\input{tex/componentArchitecture}
-\input{tex/prototypes}
+\input{tex/design/chapter_visualproduct}
+\input{tex/design/modeling_of_giraf}
+\input{tex/design/uifunctions}
+
+\input{tex/design/chapter_prototyping}
+\input{tex/design/prototypes}
+
+\input{tex/design/chapter_designl}
+\input{tex/design/componentArchitecture}
+%%\input{tex/design/android}
+\input{tex/design/designconclusion}
 
 
-% 3. Implemetation
+
+% 3. Implementation
 \part{Implementation}
-\input{tex/chapter_programtools}
-\input{tex/progtools}
 
-\input{tex/chapter_modelviewcontroller}
+\input{tex/implementation/chapter_programtools}
+\input{tex/implementation/progtools}
+
+\input{tex/implementation/chapter_modelviewcontroller}
+\input{tex/implementation/model}
+\input{tex/implementation/view}
+\input{tex/implementation/controller}
+
+\input{tex/implementation/implconclusion}
 
 
-% 4 test/evalutation
-\part{Evaluation of the program}
-\input{tex/usability} %skal evt flyttes til evalution
+% 4 System evaluation
+\part{System evalution}
 
+\input{tex/evaluation/chapter_usabilitytesting}
+\input{tex/evaluation/usability}
+\input{tex/evaluation/usabilitytest}
 
+\input{tex/evaluation/chapter_unittesting}
+\input{tex/evaluation/unittheory}
+\input{tex/evaluation/unittest}
+
+\input{tex/evaluation/evalconclusion}
+
+% 5 Conclusion
 \part{Conclusion}
-\todo{Still to be planned}
+
+\input{tex/conclusion/chapter_reflection}
+\input{tex/conclusion/security}
+\input{tex/conclusion/architecture}
+\input{tex/conclusion/developmentmethod}
+\input{tex/conclusion/currentfunctionality}
+
+\input{tex/conclusion/chapter_future}
+\input{tex/conclusion/furtherdevelop}
+\input{tex/conclusion/expandproblem}
+\input{tex/conclusion/scheduleadmin}
+
+\input{tex/conclusion/finalconclusion}
 
 \addcontentsline{toc}{part}{Listings}
 \listoffigures
