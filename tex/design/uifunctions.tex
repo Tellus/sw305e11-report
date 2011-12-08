@@ -1,5 +1,7 @@
 \section{UI functions}
 
+In this section a list of functions, regarding the visual part of the system will be laid out. This is done to give a better understanding of how the prototype view was to handle requests and updates, from both the user and the server.
+
 Function types:
 \begin{itemize}
 \item{Update: Functions of this type are activated by an event in the problem area. Result: state-change in the model.}
@@ -19,6 +21,7 @@ The simple, medium, complex tags indicate how simple or complex the functions ar
 \begin{tabular}{ l  c  c }
 
 Login Screen: &  & \\ \hline
+\textit{Function name} & \textit{Function complexity} & \textit{Function type} \\ \hline
 login & Simple & Update \\ \hline
 forgotPassword & Simple & Update \\ \hline
 register & Medium & Update \\ \hline
@@ -32,6 +35,7 @@ register & Medium & Update \\ \hline
 \begin{tabular}{ l  c  c }
 
 Newsfeed: & & \\ \hline
+\textit{Function name} & \textit{Function complexity} & \textit{Function type} \\ \hline
 getNews & Simple & Readings \\ \hline
 addNewsPost & Medium & Update \\ \hline
 canUserPost & Simple & Signaling \\ \hline
@@ -46,6 +50,7 @@ canUserPost & Simple & Signaling \\ \hline
 \begin{tabular}{ l  c  c }
 
 Main menu: & & \\ \hline
+\textit{Function name} & \textit{Function complexity} & \textit{Function type} \\ \hline
 signOut & Simple & Update \\ \hline
 getMyAccount & Simple & Readings \\ \hline
 getGroup & Medium & Update \\ \hline
@@ -64,6 +69,7 @@ setView & Complex & Readings \\ \hline
 \begin{tabular}{ l  c  c }
 
 Contacts: & & \\ \hline
+\textit{Function name} & \textit{Function complexity} & \textit{Function type} \\ \hline
 getMessage & Medium & Readings \\ \hline
 getMessageList & Medium & Readings \\ \hline
 addNewMessage & Medium & Update \\ \hline
