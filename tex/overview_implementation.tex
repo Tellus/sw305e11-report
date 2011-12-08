@@ -1,0 +1,11 @@
+\section{Implementation of Model-view-controller}
+In Figure \vref{fig:overview} is an overview how our model-view controller framework/architecture has been implemented in our application where the arrows is a call dependency. It is an incomplete representation for the program because not all Classes have been represented in the figure, however, all the connections between the controller and model has been represented. 
+
+In the figure the Model's seven classes, sql_helper excluded, are all used by at least one controller while the sql_helper is used by the other classes to relay SQL commands to the database. The model will be further explained in section VREF{???????????}. We have implemented five views which corresponds to user interfaces for the Login and the contact book, the viewer will be explained further in section VREF{???????}. Four controllers has been implemented which function will be explain in section VREF{???????????}.
+
+\begin{figure}[ht]
+	\centering
+		\includegraphics[width=0.80\textwidth]{img/overview.jpg}
+	\caption{model-view-controller overview}
+	\label{fig:overview}
+\end{figure}
