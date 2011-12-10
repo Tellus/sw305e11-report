@@ -1,3 +1,24 @@
 \section{Unit test theory}
 % Formål med unittest, hvad kan unit test bruges til 
 % basal termenoligy, der findes test opensource => simple test  
+A unit test is a testing method that can be used to asses if already written code works as intended. In the unit test case has been made an assumptions and if the assumption turns out to be wrong then the code has failed. The developer will fix the bug and try again until the assumption is true that means the unit test passes. A unit test should only test particular method or function within the tested code. (kilde: The Art of Unit Testing: with Examples in .NET, Roy Osherove, Manning Publications, 2009)
+To make a good unit test this should be followed: according to Roy Osherove\cite{AOUT}: 
+\begin{itemize}
+	\item It should be automated and repeatable
+	\item It should be easy to implement
+	\item Once it's written, it should remain for future use
+	\item Anyone should be able to run it
+	\item It should run at the push of a button
+	\item It should run quickly
+\end{itemize}
+
+\subsection{Reasons for using unit test}
+When a unit test is performed it is because the developer wants to know if his/hers code run as it is supports to.  An advantage of unit testing is that the test can run separately from application such that parts of the application can be tested in isolation\cite{UTF}. Another advantage is that the developer can test several test cases together or one-by-one and later in the development process the developer can still use the test.  
+
+This test can only be used to determine if the code is good and working, and if the test suite of unit test has a high code coverage and many assertion then it is an indication of that the code is of good quality. Other test are necessary to test e.g. the application usability.   
+
+\subsection{Unit test frameworks}
+The advantage for using a unit test framework is that the developer does not have to program it, which would be very time-consuming. Unit test framework help the developer to write a test more quickly and it can run the test and review the result more easily\cite{UTF}.  
+There has been made many open source unit test framework for various coding languages and development platforms. These frameworks are generally known as xUnit. E.g. is  CppUnit for C++, JUnit for Java, NUnit for .NET among the xUnits\cite{UTF} and for PHP coding language is SimpleTest also a unit testing framework.
+
+
