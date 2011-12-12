@@ -1,16 +1,16 @@
 \section{Model}
 \label{model}
 
-In this section, the model component of the system, and how the model uses \textit{datacontainer} classes to access the data listed in the database. Futhermore the section will include a description of the relations within the database and a description of the class, \textit{GirafRecord} and some of its subclasses.
+In this section, the model component of the system, and how the model uses \textit{datacontainer} classes to access the data listed in the database. Furthermore the section will include a description of the relations within the database and a description of the class, \textit{GirafRecord} and some of its subclasses.
 
 \subsection{The \textit{GirafRecord} class}
 The \textit{GirafRecord} class is the base class of all Giraf classes used for data containing. The \textit{GirafRecord} class is an abstract class, which means that the objects of the class cannot be instantiated, whereas the subclasses inherit attributes and operations from the \textit{GirafRecord} class. The \textit{GirafRecord} class and its subclasses can be seen in figure \ref{fig:diagram} in appendix \ref{diagramAppendix}.
 
 \subsection{The GirafPlace database}
-The database uses by the Giraf system i called \textit{girafplace}. \textit{Girafplace} contains some different tables. These tables contain among other data about administratiors, applications, children, groups, devices and more.
-The model gets access to the data in the databasetabels by calling methods in one of the datacontainer classes, for exampel, if the database table \textit{devices} has to be accessed, the datacontainer class \textit{GirafDevice} is used.
+The database uses the Giraf system, called \textit{GirafPlace}. \textit{GirafPlace} contains some different tables. These tables contain data about administratiors, applications, children, groups, devices and more.
+The model gets access to the data in the databasetables by calling methods in one of the datacontainer classes, for example, if the database table \textit{devices} has to be accessed, the datacontainer class \textit{GirafDevice} is used.
 
 \subsubsection{Database relations}
-The database contains some tables and some relations between these tabels. The tabels and the relations between the tables can be seen in figure \ref{fig:database_relations} in appendix \ref{diagramAppendix}.
-Each of the tables in the database contains an attribute \textit{Id}. This attribute is used to indicate the relations of the table. Two tabels?s relations is verified by an id and a key, one of the tables contains the id, and the other table contains the key, as shown in figure \ref{fig:database_relations}, where the arrows indicates which table contains the the key and which key cotains the id. The table pointet to by the tip of the arrows is the table containing the key, and the table from which the arrow points is the table containing the id. 
-For exampel, the attribute  \textit{statusKey} in tabel \textit{users} is related to the attribute \textit{statusId} in the table \textit{userStatus}.
+The database contains some tables and some relations between these tabels. The tables and the relations between the tables can be seen in figure \ref{fig:database_relations} in appendix \ref{diagramAppendix}.
+Each of the tables in the database contains an attribute \textit{Id}. This attribute is used to indicate the relations of the table. Two tables' relations is verified by an id and a key, one of the tables contains the id, and the other table contains the key, as shown in figure \ref{fig:database_relations}, where the arrows indicate which table contains the key and which key contains the id. The table pointed to by the tip of the arrow is the table containing the key, and the table from which the arrow points is the table containing the id. 
+For exampel, the attribute  \textit{statusKey} in table \textit{users} is related to the attribute \textit{statusId} in the table \textit{userStatus}.
