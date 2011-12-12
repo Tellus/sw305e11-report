@@ -59,7 +59,7 @@ Notice how the controller \emph{always} defers control to the fallback method th
 \lstinputlisting[language=PHP]{tex/implementation/controller_example_child.php}
 
 The Child controller demonstrates how an already generated web page can request new data in the background in order to reduce page loads, but also introduce a more dynamic page impression. In its current implementation this kind of controller exclusively outputs JSON that can be readily consumed by the javascript already loaded by the client. It is debatable whether the direct output of JSON from the controller (and not an actual view) goes against the MVC pattern.
-The JSON controller type is not a subclass in an of itself (yet), but is intended to pass simple data structures back to the client, enabling both AJAX from the browser but also opens the door for an external API that can be utilised by other sites for greater extensions of the framework.
+The JSON controller type is not a subclass in itself (yet), but is intended to pass simple data structures back to the client, enabling both AJAX from the browser but also opens the door for an external API that can be utilised by other sites for greater extensions of the framework.
 
 \subsubsection*{A sub controller}
 \label{controller_sub}
