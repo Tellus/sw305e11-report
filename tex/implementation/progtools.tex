@@ -12,4 +12,14 @@ What \textit{CSS} primarily provides, with the separation, is structure and read
 
 \subsection{JavaScript}
 \textit{JavaScript} not to be confused with \textit{Java}, is a scripting language that provides dynamic web content. That is possible through client-side execution of web related scripts. The browser gets instructions from the website about how to execute the proposed content, where it is the user's choice of whether to run these instructions.
-Since most browsers support dynamic web content through \textit{JavaScript} execution, many developers run scripts on their websites to increase the visual aspect of the website and to make dynamic checking of forms and spelling for example.\cite{javascript}
+Since most browsers support dynamic web content through \textit{JavaScript} execution, many developers run scripts on their websites to increase the visual aspect of the website and to make dynamic checking of forms and spelling for example.\cite{javascript} The dynamic impression of the site is further improved by AJAX (Asynchronous JavaScript And XML) techniques, allowing the code to perform background operations (for example retrieving new data from the server) without impeding the display or reactions of the loaded page.
+
+\section{Other concepts}
+
+\subsection{JSON}
+\textit{JavaScript Object Notation} (henceforth JSON) is a human-readable notation typically used for the serialization of data across network connections. It is only semantically connected to JavaScript, and parsers for it exist in several programming languages - most importantly, JavaScript and PHP have encoding and decoding functionality for JSON, enabling platform-independent transfer of arguments and results between the PHP-based server-side scripting and the JavaScript-based client-side scripting.
+
+\subsection{MySQL}
+\textit{MySQL} is the database (formally relation database management system, or RDMS) supported by GIRAFAdmin. Although many alternatives exist (Firebird, OracleDB, PostgreSQL and SQLite to name a few) MySQL was chosen through a combination of language support (PHP has built-in support for MySQL), price (unlike some database systems like OracleDB, MySQL has both free open-source and proprietary paid licenses) and adoption rate (many surveys place MySQL ahead of open-source competitors, and Oracle - owner of both OracleDB and MySQL - has the largest market share by revenue). Most RDMS support SQL (Structured Query Language), although all differ from the SQL standard to a certain degree. The current implementation of GIRAFAdmin only uses basic SQL statements considered globally available, and the explicit use of MySQL is placed in one location (the sql\_helper class) - extending the support to a new SQL-compliant RDMS should merely be a question of modifying that class to fit.
+
+% http://www.zdnet.co.uk/news/desktop-apps/2005/01/21/mysql-and-firebird-battle-for-database-top-spot-39185042/
