@@ -1,6 +1,6 @@
 <?php
 /**
-* This class test the function in GirafUser
+* This class test the functions in GirafUser
 */
 class TestGirafUser extends UnitTestCase
 {
