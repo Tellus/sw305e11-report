@@ -1,14 +1,65 @@
 \section{Unit testing process}
+In our unit test we have used the php unit test framework SimpleTest, which meant that we only had to write the unit test cases and the specified test suite. First where will be listed what was tested and then a few examples will be shown. 
 
-\subsection{Planning}
+\subsection{Test cases}
 % afdække hvad der kan testes med denne test,
 % lav en liste over hvilke dele der bliver testet
+This unit test was made to test some of the classes in the model layer performed as expected. Each test case tests only one class from the model, but the test case contains a test for each function there are in the tested code. The class AllTests is our Test suite and the test cases is listed below with its test functions:
+
+\begin{itemize}
+	\item {\textit{TestGirafNewsPost} tests the class \textit{GirafNewsPost}}
+		\begin{itemize}
+			\item {\textit{testBaseGroupNews} tests the function \textit{getGroupNews()}}
+			\item {\textit{testSingleGroupNews} tests the function \textit{getGroupNews(1)}}
+			\item {\textit{testUserNews} tests the function \textit{getUserNews()}}
+		\end{itemize}
+
+	\item {\textit{TestGirafGroup} tests the class \textit{GirafGroup}}
+		\begin{itemize}
+			\item {\textit{testGetFunction} tests the function \textit{getGirafGroup(1)}}
+		\end{itemize}
+
+	\item {\textit{TestSqlHelper} tests the class \textit{sql\_helper}}
+		\begin{itemize}
+			\item {\textit{testInitialization} tests the function \textit{getConnection()}}
+			\item {\textit{testGoodQuery} tests the function \textit{selectQuery()} with valid input}
+			\item {\textit{testBadQuery} tests the function \textit{selectQuery()} with invalid input}
+		\end{itemize}
+
+	\item {\textit{TestGirafUser} tests the class \textit{GirafUser}}
+		\begin{itemize}
+			\item {\textit{testGetFunction} tests the function \textit{getGirafUser(1)}}
+			\item {\textit{testOnlineStatus} tests the function \textit{getOnlineStatus()}}
+			\item {\textit{testGetGroups} tests the function \textit{getUserGroups()}}
+		\end{itemize}
+
+	\item {\textit{TestAuthFunctions} tests the \textit{class auth}}
+		\begin{itemize}
+			\item {\textit{testHash} tests the function \textit{hashString()}}
+			\item {\textit{testPasswordGet} tests the function \textit{auth::getPassword(1)}}
+			\item {\textit{testPasswordMatch} tests the function \textit{matchPassword()}}
+		\end{itemize}
+
+	\item {\textit{TestGirafChild} tests the class \textit{GirafChild}}
+		\begin{itemize}
+			\item {\textit{testGetFunction} tests the function \textit{getGirafChild(1)}}
+		\end{itemize}
+	 
+\end{itemize}
 
 
 \subsection{Implementing the test}
-% hvordan vi tester forskellige dele af systemet, tester en klasse pr fil, man kan teste en eller alle filer.
-% et kode fra unittest, test_full + en testcase.
+\todo{tester en klasse pr fil, man kan teste en eller alle filer. Et kode fra unittest, test\_full og en testcase.}
 
-\subsection{Evaluation}
-%alt fungere på nuværende tidspunkt
-%man kan senere bruge samme test for at vertificere.
+
+\subsubsection*{Test suite AllTests}
+\lstinputlisting[language=PHP]{tex/evaluation/test_full_example_testSuite.php}
+\todo{kommentar til AllTests}
+
+
+\subsubsection*{Test case TestGirafUser}
+\lstinputlisting[language=PHP]{tex/evaluation/TestGirafChild_example_testCase.php}
+\todo{kommentar til TestGirafUser}
+
+\subsubsection*{Conclusion}
+\todo{"alt fungere på nuværende tidspunkt"}
