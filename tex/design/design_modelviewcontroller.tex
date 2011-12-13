@@ -20,7 +20,10 @@ In the simplest terms, a single record in a table consists of the following:
 Some, if not all, of the structure can be analysed from the source database. The SQL standard specifies the INFORMATION\_SCHEMA table containing information about all schemas in the database. Furthermore, several implementations support a DESCRIBE statement simplifying the analysis even more. In essence, a record type's structure can be uniquely determined using only its source table.
 The final result is a single class that requires minimal effort to inherit in specialisations (only changing the source table), leaving later designers to focus solely on the properties that make a particular specialisation unique.
 
+\subsection{Controller}
+As the next immediate layer after the model, the controller is best described before the view (in contrast to the literal name of the architecture).
+% Discuss how designing a triad of controllers - primary, secondary and supporting - makes sense from the point of view of security, control and extendability. Clearly defined roles give clearly defined types of output.
+
 \subsection{View}
 MVC specifies that the view needs to reflect changes in the model, but does not explicitly define when the view is updated
-
-\subsection{Controller}
+% Debate that in a web-server context, designing views to work as polling devices and not observers is a proper consideration.
