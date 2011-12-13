@@ -10,15 +10,14 @@ The class diagram showed in appendix \ref{diagramAppendix} is made to show the r
 %All included classes, besides the GirafRecord class itself, are subclasses of the GirafRecord class. This means that the subclasses inherit all the functions and attributes from the GirafRecord class.
 %The subclasses of the GirafRecord class can override some function and attributes of the main class, and other functions and attributes has to be overridden by the subclasses, these functions and attributes are the ones which is shown in all included classes in appendix \ref{diagramAppendix}.
 %An example of this, is the attribute 'RETURN\_PRIMARYKEY' and the function 'getPrimaryKey()'.
- 
-
 
 \subsection{The GirafPlace database}
-The database uses by the Giraf system is called \textit{girafplace}. \textit{Girafplace} contains some different tables. These tables contain data about administrators, applications, children, groups, devices and more.
-The model gets access to the data in the database tables by calling methods in one of the datacontainer classes, for example, if the database table \textit{devices} has to be accessed, the datacontainer class \textit{GirafDevice} is used. \todo{may have to include some code examples, but I cannot chose which one to include}
+The database uses the Giraf system, called \textit{GirafPlace}. \textit{GirafPlace} contains some different tables. These tables contain data about administratiors, applications, children, groups, devices and more.
+The model gets access to the data in the databasetables by calling methods in one of the datacontainer classes, for example, if the database table \textit{devices} has to be accessed, the datacontainer class \textit{GirafDevice} is used.
 
 \subsubsection{Database relations}
-The database contains some tables and some relations between these tables. The tables and the relations between the tables can be seen in figure \ref{fig:database_relations} in appendix \ref{diagramAppendix}.
-Each of the tables in the database contains an attribute \textit{Id}. This attribute is used to indicate the relations of the table.
-The relations of two tables  is verified by an id and a key, one of the tables contains the id, and the other table contains the key, as shown in figure \ref{fig:database_relations}, where the arrows indicates which table contains the the key and which key contains the id. The table pointed to by the tip of the arrows is the table containing the key, and the table from which the arrow points is the table containing the id. 
+The database contains some tables and some relations between these tabels. The tables and the relations between the tables can be seen in figure \ref{fig:database_relations} in appendix \ref{diagramAppendix}.
+Each of the tables in the database contains an attribute \textit{Id}. This attribute is used to indicate the relations of the table. Two tables' relations is verified by an id and a key, one of the tables contains the id, and the other table contains the key, as shown in figure \ref{fig:database_relations}, where the arrows indicate which table contains the key and which key contains the id. The table pointed to by the tip of the arrow is the table containing the key, and the table from which the arrow points is the table containing the id. 
 For example, the attribute  \textit{statusKey} in table \textit{users} is related to the attribute \textit{statusId} in the table \textit{userStatus}.
+The database uses the Giraf system, called \textit{GirafPlace}. \textit{GirafPlace} contains some different tables. These tables contain data about administrators, applications, children, groups, devices and more.
+The model gets access to the data in the database tables by calling methods in one of the datacontainer classes, for example, if the database table \textit{devices} has to be accessed, the datacontainer class \textit{GirafDevice} is used. \todo{may have to include some code examples, but I cannot chose which one to include}
