@@ -1,4 +1,26 @@
 \section{Model-View-Controller}
 The model-view-controller (MVC) is an architectural pattern which separates an application into three parts which has a well defined area of responsibility. The model is responsible for all the calculation and data handling that the controller needs in fact all the work the application can do is done in the model. The view is the interface that the user interacts with and it is a representation of the model. The controller gets input from the user and is then able to get data or change data from the model, but the controller can also change the view in response to the user input\cite{vmc}. MVC can be used as a framework e.g. to web applications.
 
-The begin of the design process we used a The Three-tier Architecture with model, business logic and view, however, this created problem in the implementation. Then we decided to use a Model-View-Controller framework because that was more efficient and in the end easier to implement. This decision would also make it easier for future developers to add more functionality, e.g. an aSchudule administrator application. Another advantage of the MVC framework is that the view can be replaced so if Giraf administration application should be displayed on a mobile device then different view could be used.
+The first iteration of GIRAFAdmin followed a more generic three-tier architecture with model, business logic and view. The initial assumption was the view as single interaction point for the user and the remaining architecture as downwards strict \todo[inline]{Proper terminology?}. This approach created a very rigid (although unstable) structure. There was no central point of access control, views were requested directly by clients and adding functionality (Contactbook) proved more a question of hardcoding over flexible adaptation.
+
+Inspired by the web-based MVC frameworks Ruby on Rails (programmed in Ruby) and CodeIgniter (programmed in PHP), the business logic and view layers were completely remodelled to fit an MVC architecture, introducing a central gateway (the index.php file) for all user interactions. Furthermore, user input was delegated to the controller. The immediate benefit is that controllers now determine which view (or views) should be used for a particular request and the same request can result in two very different displays (for example, one fit for small-screen mobile devices and one for wide-screen PC monitors) while business logic remains completely unchanged.
+
+The remainder of this section will discuss the technical design aspects of the three layers individually. For details on final implementations, see \vref{chap_mvc_start}.
+
+% The begin of the design process we used a The Three-tier Architecture with model, business logic and view, however, this created problem in the implementation. Then we decided to use a Model-View-Controller framework because that was more efficient and in the end easier to implement. This decision would also make it easier for future developers to add more functionality, e.g. an aSchudule administrator application. Another advantage of the MVC framework is that the view can be replaced so if Giraf administration application should be displayed on a mobile device then different view could be used.
+
+\subsection{Model}
+As the foundation on which the entire framework rests, the model needed to be simple to use yet offer powerful flexibility. The Active Record pattern is an architectural pattern related to relational databases. A database table is represented by a class and a single row of the table as an object of that class. Knowing how a table is usually structured (columns with specific types of data as well as indices determining uniqueness and searchability), the basic class for a record can be defined universally.
+In the simplest terms, a single record in a table consists of the following:
+\begin{itemize}
+    \item One or more fields of data. Each field contains a specific type of data, and may or may not be a null value.
+    \item One or more indices connected to the fields. At least one field, the primary key, must be defined.
+    \item Zero or more associations with other record types.
+\end{itemize}
+Some, if not all, of the structure can be analysed from the source database. The SQL standard specifies the INFORMATION\_SCHEMA table containing information about all schemas in the database. Furthermore, several implementations support a DESCRIBE statement simplifying the analysis even more. In essence, a record type's structure can be uniquely determined using only its source table.
+The final result is a single class that requires minimal effort to inherit in specialisations (only changing the source table), leaving later designers to focus solely on the properties that make a particular specialisation unique.
+
+\subsection{View}
+MVC specifies that the view needs to reflect changes in the model, but does not explicitly define when the view is updated
+
+\subsection{Controller}
