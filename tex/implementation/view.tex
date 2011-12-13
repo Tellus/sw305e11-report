@@ -1,76 +1,23 @@
 \section{View}
 \label{view}
-This section describes the two facets of creating the views for GIRAFAdmin. That is, both the implementation of the view element of MVC in the GIRAF framework, as well as the technical details of the various views.
-
-\subsection{Intro}
 In this section we explain our thought on designing the visual part of GIRAFAdmin. We wanted to create a simple and pleasant design for the user and it was crucial that the design was intuitive to use, as the user may not be experienced with computers. \todo{Why are we discussing aesthetics in a technical chapter? - Joe}
 
-
 \subsection{Technology}
-To create our design for GIRAFAdmin we have used CSS to style an HTML framework. The decision to use CSS was clear as CSS offers a simple and easy way to edit our design, as every page uses the same CSS-document through classes and IDs \todo{I disagree. CSS was used because it is the de factor standard for styling web pages. Together with HTML and XML it creates the trifecta of the semantic web: data, structure and style. -Joe}. Classes and IDs can be assigned to several objects in HTML, such as pictures, tables, divs and even text. An example of styling a div in CSS could look like this. 
+As GIRAFAdmin is web-based, the most obvious choice for implementing viwes are through the de factor standards of (X)HTML and CSS. Apart from this, using JavaScript (notably with the JavaScript library JQuery) offers more reactive web pages that can be made to only reload partially instead of completely reloading the page on every new request. See chapter \vref{implementation_tools_languages} for an introduction to the various tools and concepts. Do note, however, that the specific divison between controller and view means that a controller action could as well invoke views that create a HTML5 web page as it could invoke a view that created and displayed a PDF file.
 
-\begin{lstlisting}
-%\begin{verbatim}
-\#mainwindow {	
- width: 600px;
- height: 400px;
- background-color: \#22042F;
- border: 2px solid \#FF0044;
-}
-%\end{verbatim}
-\end{lstlisting}
+The following figure depicts the most predominant output of the current (HTML) implementation and the views and segments it is split into. Note in particular the header and footer of the page (much of it invisible to the user as it merely sets up the environment), which can be re-used in other views to create a global style and functionality to the site. The division is made from a conventional divide and conquer methodology. By solving the issue of CSS style and JavaScript inclusions in one place, they can easily be upgraded or switched out in one place while still affecting the entire site. Conversely, removing the redundancy from all "content" views (views with the actual content or representations of the model) makes for a cleaner base template for views and their interchangeability.
+\missingfigure{Full-screen image of the main page with an open contactbook. Mark all special sections.}
 
-
-\subsection{Main concept}
-In our first draft we agreed on giving to user 2 ways to reach the wanted page. This resulted in 2 axes, one containing the children and the other containing the applications. 
-
-%Insert image of table
-%Needs preamble \usepackage{multirow} !
-
-This resulted in a vertical list containing two tabs. The user would view the tab containing the list of either the children or the list of the applications. Selecting a subject on the list would produce a new horizontal list containing the opposite subjects. A combination of these two subjects would produce the relevant information for that specific child and application.
-The children list contained a ``General`` icon which enabled the option of managing more than one tablet, for instance creating an entry in the calendar. 
-
-%image of first design
-\missingfigure{Image of first design}
-
-After a couple of revisions we decided to remove to horizontal list and simply have a double list, containing the full list of children and applications the user were authorized to view. 
-
-%image of final design
-\missingfigure{Image of final design}
-
-Our final design consists of the following boxes:
-\begin{itemize}
- \item The header contains the logo, a profile picture of the user and two buttons, a My Account window and a log out function.
- \item The menu consists of two lists, one for children and one for applications. The children's list contains pictures of each child, whereas the application's list contains icons. 
- \item The window is the main box for content. This window allows the user to edit and manage applications settings. For a specific application layout is designed by the developer of the application.
- \item The bottom bar, which is a measure of last resort if everything else fails. It is discrete, but always available for the user. It contains a phone number and an e-mail for the user to contact support.
-\end{itemize}
-
-
-\subsection{Aesthetics}
-Throughout our design, we have only used a few colors to keep a simple theme:
-\begin{itemize}
- \item The main color is the orange color, which is used for the header and bottom bar. These are static boxes and does not change.
- \item The white color is used for areas, which contains text. This is mainly the window, but also present in other windows, such as the ``My Account`` pop-up.
- \item The background is a dark gray as it is comfortable to view and removes focus from the background. 
-\end{itemize}
-
-The gestalt laws comply as the law of proximity where related objects are grouped together. An example of this is the menu, where the two lists are easily identified and separated. The law of similarity comes in to action in the notebook, where each entry is almost identical to one another.
-
-\todo[inline]{Here follows my suggestion of what this section should discuss. Everything currently has to do with aesthetics and should almost exclusively be placed further up, perhaps in the late "human" design chapter.}
-
-\section{View}
-\subsection{Introduction}
 The views in MVC represent everything that is displayed to the end user. There is some leeway in the pattern specification as to how the view is accessed. GIRAFAdmin follows a method used by several MVC frameworks where the view is invoked and displayed by the controllers after user input has been parsed and interpreted. Each view is a PHP script file. By this virtue there is no requirement that the output be HTML - a controller for listing users in the GIRAFAdmin database could as well output a full web page as it could output a PDF file generated by LaTeX or JSON data for cross-site API usage - the latter is actually an output format used to implement AJAX in the main view to deliver a more reactive user interface.
 
-\subsection{Base concept}
+\subsection{Structure}
 View files are placed in the \emph{/views} directory where they can be invoked by a controller using GirafController's view method. Views specific to GIRAF applications (such as Contactbook) should be placed in uniquely named subdirectories in the \emph{/apps} folder. Core views for GIRAFAdmin are placed in \emph{/default}.
-In order to maintain modularity and simpler expansion, the core views were split into three types: header, footer and content. Implementing global header and footer views makes it a simple matter to quickly change the global style of the entire site or inject content into documents that already have defined header sections. In fact, although sub controllers like Contactbook are injected into the content view \emph{main\_stub}, this approach allows for the sub controllers to be displayed by themselves simply by prepending a header and appending a footer, resulting in a very flexible view structure.
+As noted earlier, views are separated into three parts: header, footer and content. Implementing global header and footer views makes it a simple matter to quickly change the global style of the entire site or inject content into documents that already have defined header sections. In fact, although sub controllers like Contactbook are injected into the content view \emph{main\_stub}, this approach allows for the sub controllers to be displayed by themselves simply by prepending a header and appending a footer, resulting in a very flexible view structure.
 Although views can, in principle, perform the same actions as controller and model (as there is no scope or script restrictions) it is highly discouraged. Instead, views should rely solely on the output functions of PHP and the variables initialized by the calling controller. When a view is invoked, it is passed (by value) a set of variables from the controller and is implemented to display or discard data as necessary for final output to the calling environment.
 
-\subsection{Implementation}
-Views have no governing base class like the model's GirafRecord or controller's GirafController. Instead, each view file should be specifically tailored within its domain and role. All currently implemented views, for example, are written within the header-content-footer style, outputting HTML-friendly data for display in a browser.
-Creating new views has to be done within the purview of new or existing controllers. A view cannot be displayed without a controller to properly initialize and supply necessary variables to the scope. While not impossible, it is more likely that new views will be introduced to controllers than two different controllers will invoke the same view.
+\subsection{Code}
+Views have no governing base class like the model's GirafRecord or controller's GirafController. Instead, each view file should be specifically tailored within its domain and role. All currently implemented views, for example, are written within the header-content-footer style, outputting HTML for display in browsers.
+Creating new views has to be done within the purview of new or existing controllers. A view cannot be displayed without a controller to supply relevant information from the model's current state. While not impossible, it is more likely that new views will be introduced to controllers than two different controllers will invoke the same view.
 
 \subsection{Current views}
 In its current iteration, GirafAdmin has six views. A single header (header.php), footer (footer.php) and four content views, login, main (main\_stub), Contactbook/list and Contactbook/show. While each content view expects the header to be loaded, they are completely independent otherwise. This means that although Contactbook is loaded inside of main\_stub, it can just as easily be displayed on its own.
