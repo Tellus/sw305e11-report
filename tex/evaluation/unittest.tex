@@ -1,5 +1,5 @@
 \section{Unit testing process}
-In our unit test we have used the php unit test framework SimpleTest, which meant that we only had to write the unit test cases and the specified test suite. First where will be listed what was tested and then a few examples will be shown. 
+In our unit test we have used the php unit test framework SimpleTest, which meant that we only had to write the unit test cases and the specified test suite. First, what was tested will be listed and then a few examples will be shown. 
 
 \subsection{Test cases}
 % afdække hvad der kan testes med denne test,
@@ -49,7 +49,7 @@ This unit test was made to test some of the classes in the model layer performed
 
 
 \subsection{Implementing the test}
-The number of files and test cases depend on the desired fidelity and fine control in the entire suite. Everything from one case per assertion or a case for an entire namespace is possible. The unit tests for GIRAFAdmin are treated much like the classes themselves; one file (and test case) per class being tested. Although not currently the case, it is not unlikely that future classes be so large as to make single test cases cumbersome, instead deferring the testing of a large class to an entire suite, delegating a single assertion to a file as suggested beforehand.
+The number of files and test cases depend on the desired fidelity and fine control in the entire suite. Everything from one case per assertion or a case for an entire namespace is possible. The unit tests for GIRAFAdmin are treated much like the classes themselves; one file (and test case) per class being tested. Although not currently the case, it is not unlikely that future classes be so large that they make single test cases cumbersome, instead deferring the testing of a large class to an entire suite; delegating a single assertion to a file as suggested beforehand.
 %\todo{tester en klasse pr fil, man kan teste en eller alle filer. Et kode fra unittest, test\_full og en testcase.}
 \\
 \subsubsection*{Test suite AllTests}
@@ -66,4 +66,5 @@ TestGirafUser is a base example of how the MVC framework's model can be tested. 
 
 \subsubsection*{Conclusion}
 \todo{"alt fungere på nuværende tidspunkt"}
-After the first run of the unit test a few errors were corrected, and in the end we can conclude that the tested code run as it should.    
+While developing, unit tests were conducted and the resulting errors corrected. In current state, we can safely say that all tested code runs as it should.
+%After the first run of the unit test a few errors were corrected, and in the end we can conclude that the tested code run as it should.
