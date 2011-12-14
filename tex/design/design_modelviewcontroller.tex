@@ -5,7 +5,7 @@ The first iteration of GIRAFAdmin followed a more generic three-tier architectur
 
 Inspired by the web-based MVC frameworks Ruby on Rails (programmed in Ruby) and CodeIgniter (programmed in PHP), the business logic and view layers were completely remodelled to fit an MVC architecture, introducing a central gateway (the index.php file) for all user interactions. Furthermore, user input was delegated to the controller. The immediate benefit is that controllers now determine which view (or views) should be used for a particular request and the same request can result in two very different displays (for example, one fit for small-screen mobile devices and one for wide-screen PC monitors) while business logic remains completely unchanged.
 
-The remainder of this section will discuss the technical design aspects of the three layers individually. For details on final implementations, see \vref{chap_mvc_start}.
+The remainder of this section will discuss the technical design aspects of the three layers individually. For details on final implementations, see chapter \vref{chap_mvc_start}.
 
 % The begin of the design process we used a The Three-tier Architecture with model, business logic and view, however, this created problem in the implementation. Then we decided to use a Model-View-Controller framework because that was more efficient and in the end easier to implement. This decision would also make it easier for future developers to add more functionality, e.g. an aSchudule administrator application. Another advantage of the MVC framework is that the view can be replaced so if Giraf administration application should be displayed on a mobile device then different view could be used.
 
