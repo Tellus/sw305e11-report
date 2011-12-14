@@ -3,7 +3,7 @@
 This section will discuss the controller layer of the Giraf site, in particular the GirafController class as well as the interplay of JSON and the incomplete views that are output by certain controller actions. The discussion will center on the philosophy and inspirations behind the technical design of the controller, finally leading to the implementation that was completed as part of the this project period. The section will end with an overview and an example usage of the three base scenarios envisioned for GirafController.
 
 \subsection{Technology}
-The method of input/output is highly inspired by several existing web-based MVC frameworks, most notably Ruby on Rails (implemented in the Ruby programming language) and CodeIgniter (made in PHP) - the specifics will be discussed in \vref{controller_design}.
+The method of input/output is highly inspired by several existing web-based MVC frameworks, most notably Ruby on Rails (implemented in the Ruby programming language) and CodeIgniter (made in PHP) - the specifics will be discussed in subsection \vref{controller_design}.
 
 \subsection{Base concept}
 Ensuring that the security concerns voice by Birken \todo{Need an interview reference(s), specifying the need for secure data - Joe} would be addressed was a key factor when considering how to implement the input/output flow through the website.
@@ -56,7 +56,7 @@ Notice how the controller \emph{always} defers control to the fallback method th
 \lstinputlisting[language=PHP]{tex/implementation/controller_example_child.php}
 
 The Child controller demonstrates how an already generated web page can request new data in the background in order to reduce page loads, but also introduce a more dynamic page impression. In its current implementation this kind of controller exclusively outputs JSON that can be readily consumed by the javascript already loaded by the client. It is debatable whether the direct output of JSON from the controller (and not an actual view) goes against the MVC pattern.
-The JSON controller type is not a subclass in itself (yet), but is intended to pass simple data structures back to the client, enabling both AJAX from the browser but also opens the door for an external API that can be utilised by other sites for greater extensions of the framework.
+The JSON controller type is not a subclass in itself (yet), but is intended to pass simple data structures back to the client, enabling both AJAX from the browser but also opens the door for an external API that can be utilized by other sites for greater extensions of the framework.
 
 \subsubsection*{A sub controller}
 \label{controller_sub}
@@ -78,7 +78,7 @@ GIRAFAdmin has two main controllers in the current version for direct user inter
 \end{description}
 
 \subsubsection*{Sub}
-As mentioned in \vref{controller_sub}, only one sub controller is currently implemented - Contactbook. It exposes all the functionality that a user should directly be able to access as defined in the original design (message listing, creation, replies and such).
+As mentioned in subsection \vref{controller_sub}, only one sub controller is currently implemented - Contactbook. It exposes all the functionality that a user should directly be able to access as defined in the original design (message listing, creation, replies and such).
 
 \subsubsection*{JSON}
 The GIRAFAdmin view \emph{main\_stub} makes significant use of AJAX to request new data after a page has loaded. In order to simplify request of the data, and reduce bandwidth usage and processing requirements, only the most necessary data is transferred. The current four JSON controllers (App, Child, Device and Group( are all variants of a basic data retrieval mechanism - their names directly reflect what type of information they output. App outputs information about installed applications, Child about children, and so on. They can list data associated with a single entity (children to a user or apps on a device, for example) and return it as a JSON-encoded string that can be consumed by JavaScript.
