@@ -1,0 +1,22 @@
+\section{Future perspective}
+Late in the Android design process we discovered that there already exists a general synchronization class in Android called SyncAdapter. The SyncAdapter class basically has the same functionality as the general accounts you can add to the "My Accounts" page in Android (SOURCE: http://developer.android.com/resources/samples/SampleSyncAdapter/index.html). It could be very interesting to investigate if this synchronization feature - with some extension - could synchronize our database items and applications as Google does with its own Gmail account. If possible, it would relieve us from making the synchronization service. Although at this point, we have not gone into depth with what can or cannot be done with SyncAdapter. 
+
+Another possibility is to use the Oracle Mobile Server as backend - since it also features an Android synchronization client specifically designed to synchronize an SQlite database to an Oracle Database. Oracle also provides a Mobile Development Kit used for packaging, publishing and testing applications. Moreover it is free to use and deploy (SOURCE: http://www.oracle.com/technetwork/database/database-mobile-server/overview/index.html).  
+
+\section{Milestone 1.0}
+Milestone 1.0 contains milestone perspectives for the Android synchronization client, the synchronization protocol and server.  
+
+\textbf{Client}\\
+Synchronize content with the server\\
+Pull updates on frequent basis\\
+
+\textbf{Protocol}\\
+Implement signal messages from client\\
+Implement command messages from server\\
+
+\textbf{Server}\\
+Filter settings based on ident\\
+Filter applications based on ident from client\\
+
+\textbf{To do:}\\
+Implement group settings.  

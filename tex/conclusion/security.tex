@@ -1,6 +1,6 @@
 %under chapter reflection som 1 section
 \section{Security}
-%\todo{"det sikkerhed vi har er segmentering så user kun kan administratere børnene's mobile device. MVC opbygning gør det umuligt at tilgå dele andet end controlleren. Vi har ikke kigget på kode sikkerhed, Password hashing Hvis du log'er ind, tilgå alle handlinger på controller, så man kan tilgå andres børns devices.  Stadig lidt sårbart for indjection angreb"}
+
 
 \subsection{Security strength }
 Password hashing
@@ -8,14 +8,10 @@ Password hashing
 MVC: the user can only able to do what the controller allows.
 
 \subsection{Security weaknesses}
-%I would prefer to say: The system is vulnerable. Instead of: We are vulnerable - René, er rettet -lisbeth
-GIRAFAdmin was never comprehensively tested for injection attacks. The current code base was given a single pass of string escapes (basic user input security). Allowing higher-level developers to directly construct SQL statements is the primary flaw (as it is impossible to guarantee that developers will correctly escape the statement). Instead, a move to using safer intermediaries (such as parametrized queries) should optimally only require refactoring in the model and would increase protection from user attacks considerably. \textbf{- Johannes}
+GIRAFAdmin was never comprehensively tested for injection attacks. The current code base was given a single pass of string escapes (basic user input security). Allowing higher-level developers to directly construct SQL statements is the primary flaw (as it is impossible to guarantee that developers will correctly escape the statement). Instead, a move to using safer intermediaries (such as parametrized queries) should optimally only require refactoring in the model and would increase protection from user attacks considerably. 
 
-%The GIRAF administration system are vulnerable for injection attack, because ??(write why)?? and can it be solved??(suggest how to)??? \todo{ fill out the: ??()??}
+Storing confidential data in locations not under the web server's document root gives the site code full control of access to those resources. An authentication procedure was in late concept but never implemented - instead, all users have access to all resources even if they were not intended to have access to them, although the access is not obvious (users must request the resources through specific controllers in the site URL). Thus some information about the architecture is necessary - since the project is open-source and hosted as a public project on Github.com, this requires very little research. 
 
-Storing confidential data in locations not under the web server's document root gives the site code full control of access to those resources. An authentication procedure was in late concept but never implemented - instead, all users have access to all resources even if they were not intended to have access to them, although the access is not obvious (users must request the resources through specific controllers in the site URL). Thus some information about the architecture is necessary - since the project is open-source and hosted as a public project on Github.com, this requires very little research. \textbf{- Johannes}
 If the user is login then user can find others private pictures if the user know the path to the picture. Furthermore He/she would be able to get access to other users sensitive data although the user would need some insider knowledge of the system.
 This would be in violation against the personal data law.
 
-%Not devices so much but more sensitive data, text and pictures. (this has been fixed to some degree though) so maybe explain from Johannes' point of view. Birgir
-%Should the personal data law be mentioned in this text? - Toke
