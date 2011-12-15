@@ -1,24 +1,60 @@
 %er under chapter future work som 1. section
+\chapter{Further development}
 
 \section{Android}
-\input{tex/conclusion/androidFuturePerspective.tex}
+We did not make an application for the child such that he/she would be able to see the images and image text from the contact book, which was one of the important functionality of the contact book.
+%Christoffer
 
-\section{myAccount and News}
-\label{myAccount}
-%Maybe it should say somthing like: MyAccount and the News homepage was designed but not complitily implented - Ren� rettet:lisbeth
-MyAccount and the News homepage was designed but not implemented. The model for both my account and News was finished, but no controllers or views were completed.
+However, the designs for the protocol, client and server have been documented; implementing the features in protocol milestone 1.0 would make it a lot easier to develop an Android viewing application for the contact book, since it contains the basic functionality needed to synchronize and fetch data. In general; the next step would be to implement those features would be the next step. 
+%Evt. skal Milestone 1.0 indsættes her - kommer når jeg lige har fået den på papir. Christoffer.  
+%FUU too many steps ! (read rest of last sentence in Android). Birgir
 
-Per design, My Account should  contain personal information and the users would be able associate themselves to a child the child to a device. Furthermore all the users connected children would be able to be made into groups by the user.
 
-The News section would show announcements or global messages relevant either to all users or groups that the user is a member of. While regular users would only be able to read the messages, moderators of a group (such as kindergarten teachers) would be able to write new posts.
+\section{User Applications}
 
-\section{Application administration}
-\input{tex/conclusion/GIRAF_Application_Administrators.tex}
+My Account and the News homepage was designed but not completely implemented. The model for both My Account and News is done, but both controller and view is missing and thus has no actual functionality.
 
-\section{Site Admin}
+\subsection{My Account}
+My Account is designed to manage the settings of the user. When accessed a pop-up box would appear, containing three tabs, Personal Information, Tablets and Groups. 
+\begin{itemize}
+\item Personal Information should contain data of the user, such as name and contact information.
+\item Tablets should provide options for the user to add and remove tablets from the user's account. This is necessary as a parent or guardian can own more than one tablet.
+\item Groups allows the user to manage the group he or she is a member of. It is furthermore possible to create and invite members to group if the user had the necessary user rights.
+\end{itemize} 
+
+\subsection{News}
+News is a page available on the front page for the user to easily get updated on relevant news. The section could contain updates from the contact book, new applications available or new calendar entries.   
+
+\subsection{Special Applications}
+While designing the prototype, we agreed on giving some specific applications a special role in the application list. They are not actual applications, installed on the tablet and managed through the computer, but typically has a more general role. The two primary applications is the Personalize and GIRAF Marked, which is described in the next sections. 
+
+\subsubsection*{Personalize}
+The Personalize application, also called Settings, allows the user to edit the information of the child, i.e. name, age, contact information and so forth. Furthermore the user can specify the child's eventual disabilities for the tablet.
+
+\subsubsection*{GIRAF Marked}
+The GIRAFMarked is a market place for developers to publish applications designet for autistic children and the GIRAF system. Through this application it is possible to download more applications for the tablet. 
+
+
+
+
+
+
+
+\section{GIRAF Application administration}
+We did not get to making an application administration system to aSchedule or DigiPECS. These administrations system would need the android synchronization such that the mobile devices' will be updated. 
+
+\subsection{aSchedule Adminstrator}
+The aSchedule administration would be like a normal calendar that also uses PECS to illustrate the child's schedule for a day. 
+
+\subsection{DigiPECS}
+DigiPECS administration would be a program where the user could use to make and edit PECS, and it should then have access to an public archive of PECS (evt. opensource where the user also can add PECS) and a private archive for private pictures and PECS. 
+
+
+
+\section{Site Administration}
 Administering applications, groups and children are only the outermost pieces of the full scope of site administration. Tools for super users such as user administration and managing global application access (e.g. auditing and authorising new controllers for recently-added Giraf-compliant applications) should be staples.
 
-\section{Delevoper guide}
+\section{Developer guide}
 During development of the first architecture it became evident that expanding the system was quite difficult, even with comprehensive code documentation. Writing a developer guide that describes philosophies, conventions and inspirations would be the next step in opening up the system to new functionality.
 
 \section{Remote installation}
