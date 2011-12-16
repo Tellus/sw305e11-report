@@ -2,6 +2,7 @@
 This chapter contains further information on the android-server synchronisation. 
 
 \section{Protocol design v0.1 draft}
+\label{protocolDesgin}
 This design has not been fully implemented, only some of the design parts have been written in code. It also contains milestone perspectives; some features are planned in the first milestone release (version 1.0) and a short description on which functionality that should be implemented follows. In general; protocol milestone functionality is described in detail and can be used as a direction indicator for further development.  
 
 \subsection{Handshake}
@@ -38,6 +39,7 @@ The version string consists of 3 parts of version numbers, which indicates the s
 If a valid version is detected, the server answers ``OK'' and command messages can now be sent from the client.
 
 \section{Client design}
+\label{ClientDesgin}
 The client is designed as a local service based upon the Remote Messenger Service Sample provided by the Android development community\cite{AndDevel3}, which unlocks some features of the android subsystem. An example would be the ability to send notifications to the user and place them in the android notification bar.
 
 The client starts together with the GIRAF Launcher on the device and pulls the server for updates with a frequency of 30 minutes. This frequency has been chosen due to extend the battery-life of the Android device. However, even though it is not a planned feature, the push functionality would greatly lower battery consumption. In some scenarios it is likely to imagine that many hours will pass before any updated data will be needed to be synchronized. To save battery life, and to receive updates as they get posted, such functionality could be implemented. It is not planned in milestone 1.0 since it is not a critical feature for the system to work properly since it primarily is an optimization and does not add any extra functionality at this moment. 
@@ -59,6 +61,7 @@ This section deals with the documentation of signal messages the client receives
 \end{description}
 
 \section{Server design}
+\label{ServerDesgin}
 The server handles communication with the MySQL server backend and receives instructions from the client in the form of command messages. The current \emph{giraf\_web server project} has been migrated, such that only 1 server application exists. 
 
 \subsection{Message handling documentation}
