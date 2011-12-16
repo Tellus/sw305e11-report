@@ -3,9 +3,11 @@
 
 
 \subsection{Security strength }
-Password hashing
+Although high-end security features were not implemented, the system's structure supports more complex implementations.
 
-MVC: the user can only able to do what the controller allows.
+Password hashing and intentionally vague error messages on failed login are among the simpler approaches to hampering malicious usage, while the funnelled access approach to the framework forces all users to go through several layers of access control before they are presented with their final data.
+
+Beyond this, placing resources outside of the web server's root keeps it out of reach from regular HTTP requests while still allowing the scripts to output the data to a client, if authorised. Although any registered user can in principle access any resource at this time, the implementation itself allows for changing the authorisation logic without changing the API considerably.
 
 \subsection{Security weaknesses}
 GIRAFAdmin was never comprehensively tested for injection attacks. The current code base was given a single pass of string escapes (basic user input security). Allowing higher-level developers to directly construct SQL statements is the primary flaw (as it is impossible to guarantee that developers will correctly escape the statement). Instead, a move to using safer intermediaries (such as parametrized queries) should optimally only require refactoring in the model and would increase protection from user attacks considerably. 
