@@ -19,7 +19,6 @@ This design has not been fully implemented, only some of the design parts have b
 The first message sent from the client is a handshake. The handshake is very simple, since it only expects a string containing ``HELLO'', immediately followed by a version string.
 
 \subsection{Version} 
-<<<<<<< HEAD
 The version string consists of 3 parts of version numbers, which indicates the significance of changes made to the software. First number is major release, next is minor release, and the last number is the build number. The version numbers are separated in the string by a dot (".") character, example for a version string would look this: "1.0.1". If the server encounters a client with a newer version than its own, the server will at the moment refuse the client to connect. However, theoretically, the server could still offer functionality that has not been changed in the new version, or which does not have updated dependencies. In protocol milestone 1.0 this is not planned; however, such functionality could still be implemented by sending a short version string together with the message making it possible for the server deciding whether a particular function is still supported, even though the client version is newer. However, such scenario is unlikely to happen. 
 If a valid version is detected, the server answers "OK" and command messages can now be sent from the client.
 
@@ -43,6 +42,7 @@ Application transfer is initiated by the client sending the "APP\_TRANSFER" comm
 
 \section{Settings transfer}
 Initiated by the client, by sending the "SETTINGS\_TRANSFER" message to the server. The client locates all rows in the local SQLite database with a newer timestamp than the last updated time and transfers these rows the server. The server evaluates each row against the centralized database. If a newer entry already exists in aforementioned database, the data is dropped - in other words, server always wins when data collision occur. This choice makes sense, since the device administrators pushing updates should be ensured that new settings reaches the target device; An example could be a newly installed application - which have not been updated - containing database information, where the user only has read-only access. This ensures that device administrators still retain the possibility to update the values.
+
 When all data has been successfully sent, the client sends the "OK" message - next, the server sends back any row that is newer than the last updated time. Although not planned in milestone 1.0, the ability to implement group settings for applications should be kept in mind if such functionality is needed in the future. 
 
 The version string consists of 3 parts of version numbers, which indicates the significance of changes made to the software. First number is major release, next is minor release, and the last number is the build number. The version numbers are separated in the string by a dot (``.'') character, example for a version string would look this: ``1.0.1''. If the server encounters a client with a newer version than its own, the server will at the moment refuse the client to connect. However, theoretically, the server could still offer functionality that has not been changed in the new version, or which does not have updated dependencies. In protocol milestone 1.0 it is not planned; however, such functionality could still be implemented by sending a short version string together with the message making it possible for the server deciding whether a particular function is still supported, even though the client version is newer. However, such scenario is unlikely to happen. 
@@ -124,7 +124,7 @@ Command message ending communication.
 
 \begin{description}
 	\item[FIRST\_UPDATE] Message sent by client when the first update occurs (Usually right after the device is turned on for the first time and user profile has been completely filled out) or when a factory reset has occurred.
-	\item[SETTINGS\_TRANSFER] Message recieved from client initiating settings transfer.
+	\item[SETTINGS\_TRANSFER] Message received from client initiating settings transfer.
 	\item[USER\_PROFILE] Message received from client initiating user profile transfer.
 	\item[APP\_TRANSFER] Message received from client initiating application transfer.
 	\item[OK] A message is sent to the server, that indicates everything is ``OK'' and the server waits for this signal before sending more data.
