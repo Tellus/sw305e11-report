@@ -5,8 +5,8 @@ This section describes how the model was implemented into GIRAFAdmin's MVC archi
 \subsection{The GirafRecord class}
 \emph{GirafRecord} is designed as a combination of the Active Record and Factory patterns. Subclasses of G\emph{irafRecord} need only specify their source table and associations within overridden methods \emph{getSourceTable}, \emph{getPrimaryKey} and \emph{setAssociations}. Using this data, \emph{GirafRecord} determines the appropriate class to instantiate upon request through the \emph{getInstance} method (which is proxied automatically into methods in the format ``getClassName'' - for example \emph{getGirafChild} for the class \emph{GirafChild}) and dynamically creates the members necessary to properly represent the underlying database table. Thus changing the value of a field (member) for a row (object) is only a question of changing the value of that object's corresponding member (user $\rightarrow$ statusKey in the case of \emph{GirafUser}, for example). Changes are not written back to the database until \emph{commit} is called on the object.
 
-The class diagram showed in appendix \ref{diagramAppendix} is made to show the relation between the \emph{GirafRecord} class and some of the other classes used in the Giraf system.\todo{What is the use of this? We can depict the inheritance diagram, but what's with the "other classes" bit?}
-
+The class diagram in appendix \ref{diagramAppendix} shows the relation between the \emph{GirafRecord} class and its subclasses.
+\todo{Make the diagram smaller, so it fits the page}
 \subsection{Dynamic shaping}
 Thanks for the dynamic typing properties of PHP, object of classes can be modified during run-time. PHP also has several so-called ``magic methods'' that can increase the flexibility of classes. Three of these, two for properties and one for methods, was applied to dynamically shape objects to the tables they were representing.
 
