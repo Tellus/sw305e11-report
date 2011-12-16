@@ -17,7 +17,7 @@ The following figure depicts the most predominant output of the current (HTML) i
 \begin{figure}
     \begin{center}
     \includegraphics[scale=0.45,angle=90]{img/mvc_details/mvc_detailed_views2_view}
-    \caption{\label{implementation_view_views1}The red box displays an extra view brought in by the Contactbook controller.}
+    \caption{\label{implementation_view_views1}The red box displays an extra view brought in by \emph{Contactbook}.}
     \end{center}
 \end{figure}
 
@@ -25,7 +25,7 @@ The views in MVC represent everything that is displayed to the end user. There i
 
 \subsection{Structure}
 View files are placed in the \emph{/views} directory where they can be invoked by a controller using GirafController's view method. Views specific to GIRAF applications (such as Contactbook) should be placed in uniquely named subdirectories in the \emph{/apps} folder. Core views for GIRAFAdmin are placed in \emph{/default}.
-As noted earlier, views are separated into three parts: header, footer and content. Implementing global header and footer views makes it a simple matter to quickly change the global style of the entire site or inject content into documents that already have defined header sections. In fact, although sub controllers like Contactbook are injected into the content view \emph{main\_stub}, this approach allows for the sub controllers to be displayed by themselves simply by prepending a header and appending a footer, resulting in a very flexible view structure.
+As noted earlier, views are separated into three parts: header, footer and content. Implementing global header and footer views makes it a simple matter to quickly change the global style of the entire site or inject content into documents that already have defined header sections. In fact, although sub controllers like \emph{Contactbook} are injected into the content view \emph{main\_stub}, this approach allows for the sub controllers to be displayed by themselves simply by prepending a header and appending a footer, resulting in a very flexible view structure.
 Although views can, in principle, perform the same actions as controller and model (as there is no scope or script restrictions) it is highly discouraged. Instead, views should rely solely on the output functions of PHP and the variables initialized by the calling controller. When a view is invoked, it is passed (by value) a set of variables from the controller and is implemented to display or discard data as necessary for final output to the calling environment.
 
 \subsection{Code}
@@ -33,4 +33,4 @@ Views have no governing base class like the model's GirafRecord or controller's 
 Creating new views has to be done within the purview of new or existing controllers. A view cannot be displayed without a controller to supply relevant information from the model's current state. While not impossible, it is more likely that new views will be introduced to controllers than two different controllers will invoke the same view.
 
 \subsection{Current views}
-In its current iteration, GirafAdmin has six views. A single header (header.php), footer (footer.php) and four content views, login, main (main\_stub), Contactbook/list and Contactbook/show. While each content view expects the header to be loaded, they are completely independent otherwise. This means that although Contactbook is loaded inside of main\_stub, it can just as easily be displayed on its own.
+In its current iteration, GirafAdmin has six views. A single header (header.php), footer (footer.php) and four content views, login, main (main\_stub), \emph{Contactbook::list} and \emph{Contactbook::show}. While each content view expects the header to be loaded, they are completely independent otherwise. This means that although \emph{Contactbook} is loaded inside of main\_stub, it can just as easily be displayed on its own.
