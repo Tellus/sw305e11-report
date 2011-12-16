@@ -5,13 +5,11 @@ The architecture of the administration part of the GIRAF system is designed as a
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=300px]{img/ComponentArketektur.png}
+\includegraphics[width=1.0\textwidth]{img/ComponentArketektur.png}
 \caption{The figure shows the component architecture of the administrations system}
 \label{fig:architecture}
 \end{figure}
 
 The three components contain other components, which contain some attributes. These attributes define what function the overall component has, for example the view component contains a windows component, which contains some attributes called ``labels'', ``buttons'' and ``boxes''. The attributes show that the windows component can contain labels, buttons and boxes.
-The controller contains a component with an attribute called accesList, this means that the controller can, through that component, get a list from the database, edit a list from the database and make an object of a list.
-The database component contains a component called lists, this component has an attribute called lists, this attribute indicates that the database contains lists. Among these lists is a list of devices, a list of children, a list of applications and a list of administrators.
-
-\todo{WHAT THE FUCKING FUCK IS THIS ?... no.. but seriously, this section needs some serious fixing (beyond my superpowers). -Birgir}
+The controller contains a component with an attribute called accesList, this attribute can get a list from the database, edit a list from the database and make an object of a list.
+The database contains a component called lists, this component has an attribute which indicates that the database contains lists. Among the lists is a list of devices.
