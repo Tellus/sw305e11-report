@@ -1,0 +1,120 @@
+\chapter{Synchronisation}
+This chapter contains further information on the android-server synchronisation. 
+
+\section{Protocol design v0.1 draft}
+This design has not been fully implemented, only some of the design parts have been written in code. It also contains milestone perspectives; some features are planned in the first milestone release (version 1.0) and a short description on which functionality that should be implemented follows. In general; protocol milestone functionality is described in detail and can be used as a direction indicator for further development.  
+
+\subsection{Handshake}
+The first message sent from the client is a handshake. The handshake is very simple, since it only expects a string containing ``HELLO'', immediately followed by a version string.
+
+\subsection{Version} 
+The version string consists of 3 parts of version numbers, which indicates the significance of changes made to the software. First number is major release, next is minor release, and the last number is the build number. The version numbers are separated in the string by a dot (".") character, example for a version string would look this: "1.0.1". If the server encounters a client with a newer version than its own, the server will at the moment refuse the client to connect. However, theoretically, the server could still offer functionality that has not been changed in the new version, or which does not have updated dependencies. In protocol milestone 1.0 this is not planned; however, such functionality could still be implemented by sending a short version string together with the message making it possible for the server deciding whether a particular function is still supported, even though the client version is newer. However, such scenario is unlikely to happen. 
+If a valid version is detected, the server answers "OK" and command messages can now be sent from the client.
+
+\subsection{Ident}
+
+The ident is sent to the server after the client receives the ``OK'' signal. After an ident is successfully received by the server, the server sends an ``OK'' signal to the client, indicating that it is ready to receive further instructions. 
+
+Ident is performed after a successful handshake and version check - and the client have received an ``OK'' from the server - the client will create an MD5 hash of its WiFi (Wireless Fidelity) unique network address, also called a Media Access Control address (MAC). MAC addresses are generally used to identify network equipment of any kind using any implementation of the IEEE 802 standard\cite{IEEE}, and are frequently used to control network equipment through an ACL\cite{cisco}. The purpose of the ident is to create a simple, yet effective ACL which provides a filter on which application settings (and, in protocol milestone 1.0 this will also include installable applications) are accessible to the client. MD5 hashes are not collision-safe\cite{ACCESSDATA}, but any collisions would be highly unlikely, due to the source, which in this case is MAC-48 address. 
+The ident is sent to the server after the client receives the ``OK'' signal. After an ident is successfully received by the server, the server sends an ``OK'' signal to the client, indicating that it is ready to receive further instructions. 
+ 
+
+\subsection{Timestamp}
+After a successful ident, the client sends a timestamp string of the current time formatted as unix time. The server then calculates the difference between its own time and the client's time, taking into calculation that the server and client might be in different time zones. If the time difference is greater than +/- 12 hours (The max possible difference when calculating time), the server returns an error message ``TIME\_NOT\_CONFIGURED'' to the client, and ends communication. Otherwise, the server answers ``OK''. 
+Next, the client sends it's last update time to the server. If no update time exists, the server receives the ``FIRST\_UPDATE'' message from client.
+
+\subsection{User profile transfer}
+The client initiates the user profile transfer  by sending the ``USER\_PROFILE'' command message. If the server receives the message, an ``OK'' is returned to the client. The client sends any timestamps newer than the last update time. If an update from the server is newer than the last update time, and the client has a conflicting update, the server always wins. All data with a newer timestamp is transmitted back to the client. When all data has been sent, the server sends the ``DONE'' signal. 
+
+\subsection{Application transfer}
+Application transfer is initiated by the client sending the ``APP\_TRANSFER'' command message to the server and the server responds with ``OK''. The client sends a list of installed GIRAF applications together with the application version string. If any updates are available, these will be installed first. Any applications marked for installation will be sent to the server after the application updates completes.    
+
+\subsection{Settings transfer}
+Initiated by the client, by sending the ``SETTINGS\_TRANSFER'' message to the server. The client locates all rows in the local SQLite database with a newer timestamp than the last update time and transfers these rows the server. The server evaluates each row against the centralized database. If a newer entry already exists in aforementioned database, the data is dropped - in other words, server always wins when data collision occur. This choice makes sense, since the device administrators pushing updates should be ensured that new settings reaches the target device; An example could be a newly installed application - which haven't been updated - containing database information, where the user only has read-only access. This ensures that device administrators still retain the possibility to update the values.
+
+When all data has been successfully sent, the client sends the ``OK'' message - next, the server sends back any rows that is newer than the last update time. Although not planned in milestone 1.0, the ability to implement group settings for applications should be kept in mind if such functionality is needed in the future. 
+
+The version string consists of 3 parts of version numbers, which indicates the significance of changes made to the software. First number is major release, next is minor release, and the last number is the build number. The version numbers are separated in the string by a dot (``.'') character, example for a version string would look this: ``1.0.1''. If the server encounters a client with a newer version than its own, the server will at the moment refuse the client to connect. However, theoretically, the server could still offer functionality that has not been changed in the new version, or which does not have updated dependencies. In protocol milestone 1.0 it is not planned; however, such functionality could still be implemented by sending a short version string together with the message making it possible for the server deciding whether a particular function is still supported, even though the client version is newer. However, such scenario is unlikely to happen. 
+If a valid version is detected, the server answers ``OK'' and command messages can now be sent from the client.
+
+\section{Client design}
+The client is designed as a local service based upon the Remote Messenger Service Sample provided by the Android development community\cite{AndDevel3}, which unlocks some features of the android subsystem. An example would be the ability to send notifications to the user and place them in the android notification bar.
+
+The client starts together with the GIRAF Launcher on the device and pulls the server for updates with a frequency of 30 minutes. This frequency has been chosen due to extend the battery-life of the Android device. However, even though it is not a planned feature, the push functionality would greatly lower battery consumption. In some scenarios it is likely to imagine that many hours will pass before any updated data will be needed to be synchronized. To save battery life, and to receive updates as they get posted, such functionality could be implemented. It is not planned in milestone 1.0 since it is not a critical feature for the system to work properly since it primarily is an optimization and does not add any extra functionality at this moment. 
+
+
+It has earlier been speculated that from the way SQlite works, issues with many applications accessing the same SQlite database might resort in database errors. However, in SQlite version 3.0.0 new locking features were introduced making it possible to let the system control when exclusive locks occur - which is used when writing to the database - through a pager module\cite{SQlite}. Since all newer Android Operation Systems ships with SQlite 3.4.0 or newer\cite{AndDevel} this problem is not as big as it used to be. However, GIRAF application developers should still minimize the needs for reserved and exclusive locks, to prevent the client from getting the SQLITE\_BUSY error.   
+
+The current GIRAF client already contains functionality to fetch and install applications from the GIRAF Place application server, this functionality is planned to be extended with an update feature, where the synchronization service pulls the server for updates making it into an automated process. This could be extended to include remote installation of applications on the device which Android currently features. Inspiration on how such features could be implemented using the Android service class is accessible \cite{DevRemote}. Moreover, the client handles database writes. It has earlier been speculated that from the way SQlite works, issues with many applications accessing the same SQlite database might resort in database errors. However, in SQlite version 3.0.0 new locking features were introduced making it possible to let the system control when exclusive locks occur (Used when writing to the database) through a pager module\cite{SQlite}. Since all newer Android Operation Systems ships with SQlite 3.4.0 or newer\cite{AndDevel} this problem is not as big as it used to be. However, GIRAF application developers should still minimize the needs for reserved and exclusive locks, to prevent the client from getting the SQLITE\_BUSY error.   
+
+
+\subsection{Message handling documentation}
+This section deals with the documentation of signal messages the client receives from the server - make note that the server will never send any command messages; the client interprets the signals sent from the server and executes functions as needed.   
+
+\begin{description}
+	\item[OK] Everything is ``OK''. The client waits for this signal before sending more data. Also used for debugging; in milestone 1.0 unnecessary OK messages can be removed from the transfer processes. 
+	\item[DONE] Signal message received at the end of a successful settings, user profile or application transfer.
+	\item[KTHXBYE] Signal message that terminates communication. Logs the current time as update time. This message is only received after a complete synchronization has completed.
+	\item[TIME\_NOT\_CONFIGURED] The ``TIME\_NOT\_CONFIGURED'' string is handled by the client by placing a notification in the Android notification bar. If the notification is pressed, it will open up the date/time configuration page in Android Settings.
+\end{description}
+
+\section{Server design}
+The server handles communication with the MySQL server backend and receives instructions from the client in the form of command messages. The current \emph{giraf\_web server project} has been migrated, such that only 1 server application exists. 
+
+\subsection{Message handling documentation}
+This section deals with the documentation of signal messages the server receives from the client.  
+
+
+\textbf{FIRST\_UPDATE}\\
+Message sent by client when the first update occurs, which usually occurs right after the device is turned on for the first time and user profile has been completely filled out or when a factory reset has occurred.\\
+
+\textbf{SETTINGS\_TRANSFER}\\
+Message received from client initiating settings transfer. \\
+
+\textbf{USER\_PROFILE}\\
+Message received from client initiating user profile transfer. \\ 
+
+\textbf{APP\_TRANSFER}\\
+Message received from client initiating application transfer. \\
+
+\textbf{OK}\\
+A message is sent to the server, that indicates everything is "OK" and the server waits for this signal before sending more data
+
+\textbf{FIRST\_UPDATE}\\
+If this message is received, the server knows that this is a new device - or if the device already exists in the server database - a factory reset has been performed.
+If a factory reset has been performed, the server immediately starts to synchronize data, by sending the user profile first, application list second and application settings last. Between each step, the server waits for an "OK" message from the client. 
+
+\textbf{BYE}\\
+Command message ending communication. 
+
+\begin{description}
+	\item[FIRST\_UPDATE] Message sent by client when the first update occurs (Usually right after the device is turned on for the first time and user profile has been completely filled out) or when a factory reset has occurred.
+	\item[SETTINGS\_TRANSFER] Message received from client initiating settings transfer.
+	\item[USER\_PROFILE] Message received from client initiating user profile transfer.
+	\item[APP\_TRANSFER] Message received from client initiating application transfer.
+	\item[OK] A message is sent to the server, that indicates everything is ``OK'' and the server waits for this signal before sending more data.
+	\item[FIRST\_UPDATE] If this message is received, the server knows that this is a new device - or if the device already exists in the server database - a factory reset has been performed.
+If a factory reset has been performed, the server immediately starts to synchronize data, by sending the user profile first, application list second and application settings last. Between each step, the server waits for an ``OK'' message from the client. 
+	\item[BYE] Command message ending communication. 
+\end{description}
+
+
+\section{Implementation extensions to the GIRAF Framework}
+A few extensions had to be made to the GIRAF framework in order to get the functionality needed to make a successful synchronization, since only a few parts were fully implemented, only those that reached a final state will be discussed here. 
+
+\subsection{Sw3SqliteToClass - addition to the sw6.library package}
+The Sw3SqliteToClass package contains functionality to fetch all data from the sqlite database. The commands can be modified such that only data with a specific timestamp gets returned. The additions were made in its own package due to the design philosophy that only minor changes should be made to existing code created by the SW6 groups.
+
+This particular code stub returns the timestamp for specific application, a specific variable and a specific datatype:
+
+\lstset{language=JAVA}
+\begin{lstlisting}
+public static Cursor getSettingTime(Context context, String appName, String varName, String dataType) throws SettingNotFoundException 
+{
+		Uri settingRequest = Uri.withAppendedPath(PrivateDefinitions.CONTENT_URI, dataType + "/" + appName + "/" +  varName + "/" + PrivateDefinitions.TIMESTAMP);
+		Cursor settingCursor 	= context.getContentResolver().query(settingRequest, null, null, null, null);	
+		return settingCursor;
+}
+\end{lstlisting}
+
+The client can pull a list of installed applications by creating a new instance of the Android \emph{PackageManager} class and call the \emph{getInstalledApplications(int flags)} method\cite{AndDevel2}.
