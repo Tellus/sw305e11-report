@@ -1,11 +1,9 @@
 %under chapter reflection som 1 section
 \section{Security}
 
-
-\subsection{Security strength }
 Although high-end security features were not implemented, the system's structure supports more complex implementations.
 
-Password hashing and intentionally vague error messages on failed login are among the simpler approaches to hampering malicious usage, while the funnelled access approach to the framework forces all users to go through several layers of access control before they are presented with their final data.
+Password hashing and intentionally vague error messages on failed login are among the simpler approaches to hampering malicious usage, while the funneled access approach to the framework forces all users to go through several layers of access control before they are presented with their final data.
 
 Beyond this, placing resources outside of the web server's root keeps it out of reach from regular HTTP requests while still allowing the scripts to output the data to a client, if authorised. Although any registered user can in principle access any resource at this time, the implementation itself allows for changing the authorisation logic without changing the API considerably.
 
