@@ -61,10 +61,10 @@ The AllTests test suite is a "catch all" type of suite that simply loads all fil
 \lstinputlisting[language=PHP]{tex/evaluation/TestGirafChild_example_testCase.php}
 
 TestGirafUser is a base example of how the MVC framework's model can be tested. Subclasses of GirafRecord generally only depend on other GirafRecord subclasses given the nature of the framework. The model will never go upwards, to the controller and view, in the layers. The only two remaining classes are sql\_helper and the abstract GirafRecord class. Assuming they have both been given comprehensive unit testing, each subclass (like GirafChild) should focus only on testing its own specialisation. This involves testing CRUD (Create, Read, Update, Delete) where applicable as well as associations between subclasses (GirafGroup and GirafUser, for example).
-\todo{We really need to actually implement this focus testing on at least one case. - Joe}
+\todo{We really need to actually implement this focus testing on at least one case. - Joe Jeg forstår ikke kommentaren - René}
 \\
 
 \subsubsection*{Conclusion}
-\todo{"alt fungere på nuværende tidspunkt"}
+%\todo{"alt fungere på nuværende tidspunkt"}
 While developing, unit tests were conducted and the resulting errors corrected. In current state, we can safely say that all tested code runs as it should.
 %After the first run of the unit test a few errors were corrected, and in the end we can conclude that the tested code run as it should.
