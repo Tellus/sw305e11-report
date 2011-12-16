@@ -1,0 +1,17 @@
+\section{lighttpd example configuration}
+\label{appendix_server_conf}
+\begin{figure}
+\begin{verbatim}
+# Standard host filter for lighttpd
+$HTTP["host"] =~ "giraf\.homestead\.dk" {
+    # Rewrite all requests, that are not to the subdirs css and js, to the
+    # index file in document root.
+	url.rewrite-once = (
+		"/(.*)\.(.*)" => "$0",
+		"/(css|js)/" => "$0",
+		"^/([^.]+)$" => "/index.php/$1"
+	)
+}
+\end{verbatim}
+\caption{A lighttpd example configuration for redirecting requests to index.php if they are unsanctioned.}
+\end{figure}
