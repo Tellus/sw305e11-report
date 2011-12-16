@@ -2,47 +2,47 @@
 
 \todo{I future work kommer det i de tre første paragraffer til at handle lidt for meget om hvad I ikke nåede i stedet for hvad man eller kan lave. Dette er nok bare mest et spørgsmål om at ændre nogle af formuleringerne så det ikke bliver så meget: "Det nåede vi heller ikke ..." -ulrik}
 \section{Android}
-\input{tex/conclusion/androidFuturePerspective.tex}
+%\input{tex/conclusion/androidFuturePerspective.tex}
+\label{androidReflection}
+An Android version of the contact book application, tailored to the needs and capabilities of a child, was not completed. However, the designs for the protocol, client and server have been documented. Finalising the protocol implementation is the first stepping stone towards developing this application, given the need for some synchronising mechanism between device and site.
 
-\section{User Applications}
+\section{Core site features}
+Several features were planned and to some degree designed, but could not be completed before the project deadline. A subset of these features were envisioned as pseudo applications, accessible from the list of installed applications, while the remainders would be incorporated into the main site design.
 
-My Account and the News homepage was designed but not completely implemented. The model for both My Account and News is done, but both controller and view is missing and thus has no actual functionality.
+\subsection*{My Account}
+My Account was intended as a management area of the site, allowing users to manage their personal information as well as devices, groups and children. Only the Model component was implemented.
 
-\subsection{My Account}
-My Account is designed to manage the settings of the user. When accessed a pop-up box would appear, containing three tabs, Personal Information, Tablets and Groups. 
-\begin{itemize}
-\item Personal Information should contain data of the user, such as name and contact information.
-\item Tablets should provide options for the user to add and remove tablets from the user's account. This is necessary as a parent or guardian can own more than one tablet.
-\item Groups allows the user to manage the group he or she is a member of. It is furthermore possible to create and invite members to group if the user had the necessary user rights.
-\end{itemize} 
+\subsection*{News}
+News is a page available on the front page for the user to easily get updated on relevant news. The section could contain updates from the contact book, new applications available or new calendar entries. The Model was completed.
 
-\subsection{News}
-News is a page available on the front page for the user to easily get updated on relevant news. The section could contain updates from the contact book, new applications available or new calendar entries.   
+\subsection*{Personalise}
+A pseudo application that would give access to modify a child's personal details.
 
-\subsection{Special Applications}
-While designing the prototype, we agreed on giving some specific applications a special role in the application list. They are not actual applications, installed on the tablet and managed through the computer, but typically has a more general role. The two primary applications is the Personalize and GIRAF Marked, which is described in the next sections. 
+\subsection*{GirafPlace}
+GirafPlace was originally created as part of GIRAF-A-11 as a medium for publishing GIRAF-compliant applications. While the underlying database of that site and GIRAF-W-11 have been merged, their user interfaces and architectures are still independent. Merging the two into a single application would simplify the overall structure both for users and developers.
 
-\subsubsection*{Personalize}
-The Personalize application, also called Settings, allows the user to edit the information of the child, i.e. name, age, contact information and so forth. Furthermore the user can specify the child's eventual disabilities for the tablet.
+\subsection*{Site Administration}
+Administering applications, groups and children are only the outermost pieces of the full scope of site administration. Tools for super users such as user administration and managing global application access (e.g. auditing and authorising new controllers for recently-added Giraf-compliant applications) should be considered necessary.
 
-\subsubsection*{GIRAF Marked}
-The GIRAFMarked is a market place for developers to publish applications designet for autistic children and the GIRAF system. Through this application it is possible to download more applications for the tablet. 
+\subsection*{Gallery and PECS administration}
+During the interviews with Birken, two specific products were highly desired. While one (the contact book) was designed an implemented, the other - a combined gallery and PECS constructor - was considered too complex for this project. As such, an open-source competitor to the proprietary (and, to the interviewee, difficult to use) BoardMaker application should be considered for future development.
 
+\section{Administration of GIRAF-A-11 applications}
+Referring to the earlier figure \vref{fig:classOversigt} (GIRAF Application Administrators), it was suggested that additional modules should be implemented in GIRAF-W-11 that allowed for relevant administrative options over the applications available for the Android. The synchronisation protocol as well as relevant sets of MVC components should be developed for this to be achieved.
+% and these applications were not made in this project, but it were taken into account, that it should be implemented. The GIRAF applications DigiPECS and aSchedule would each need an administrator application so the user would be able to administer the application on the mobile device. However, for this to work the synchronization service has to be completed as was discussed in both chapter \vref{androidDesign} and subsection \ref{androidReflection}.
+% GIRAF Application Administrators refers to the earlier figure 
+Specifically the DigiPECS and aSchedule need administration modules on the same level as contact book.
 
+%\subsection{DigiPECS application administrator}
+%DigiPECS' administration application would be a program that the user could use to find, make and edit digital PECS more easily. Therefore it should have access to a public archive of PECS, which could be an open-source alternative to Boardmaker, where the user also could choose to save the DigiPECS they make. It should also have access to a private archive with private pictures and PECS, so the Personal Data Protection Act are complied with according to Danish law. 
 
+%This idea originated from the GIRAF application DigiPecs and from the first interview with Kristine Niss-Henriksen about 51 minutes into the interview (see appendix \vref{first_interview_birken}).
 
-
-
-
-\section{GIRAF Application administration}
-\input{tex/conclusion/GIRAF_Application_Administrators.tex}
-
-
-\section{Site Administration}
-Administering applications, groups and children are only the outermost pieces of the full scope of site administration. Tools for super users such as user administration and managing global application access (e.g. auditing and authorising new controllers for recently-added Giraf-compliant applications) should be staples.
+%\subsection{aSchedule administrator}
+%The aSchedule administration application would be much like a normal calendar, but it would also be using the DigiPECS to illustrate the child's schedule for a day. An entry in the calendar would as minimum contain an activity, description of the activity by using DigiPECS, a start time and possibly the duration of the activity.
 
 \section{Developer guide}
-During development of the first architecture it became evident that expanding the system was quite difficult, even with comprehensive code documentation. Writing a developer guide that describes philosophies, conventions and inspirations would be the next step in opening up the system to new functionality.
+During development of the first architecture it became evident that expanding the system was quite difficult, even with comprehensive code documentation. Writing a developer guide that describes philosophies, conventions and inspirations would be the next step in opening up the system to new functionality from third-party developers.
 
 \section{Remote installation}
 The current GIRAF client already contains functionality to fetch and install applications from the GIRAF Place application server, this functionality is planned to be extended with an update feature, where the synchronization service pulls the server for updates making it into an automated process. This could be extended to include remote installation of applications on the device which Android currently features. Inspiration on how such feature could be implemented using the Android service class is accessible \cite{DevRemote}. 
