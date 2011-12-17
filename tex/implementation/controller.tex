@@ -1,9 +1,9 @@
 \section{Controller}
 \label{controller}
-This section will discuss the controller layer of the Giraf site, in particular the \emph{GirafController} class as well as the interplay of JSON and the incomplete views that are output by certain controller actions. The discussion will center on the philosophy and inspirations behind the technical design of the controller, finally leading to the implementation that was completed as part of the this project period. The section will end with an overview and an example usage of the three base scenarios envisioned for \emph{GirafController}.
+This section will discuss the controller layer of the \emph{GIRAF} site, in particular the \emph{GirafController} class as well as the interplay of JSON and the incomplete views that are output by certain controller actions. The discussion will center on the philosophy and inspirations behind the technical design of the controller, finally leading to the implementation that was completed as part of the this project period. The section will end with an overview and an example usage of the three base scenarios envisioned for \emph{GirafController}.
 
 \subsection{Technology}
-The method of input/output is highly inspired by several existing web-based MVC frameworks, most notably Ruby on Rails (implemented in the Ruby programming language) and CodeIgniter (made in PHP) - the specifics will be discussed in subsection \vref{controller_design}.
+The method of input/output is highly inspired by several existing web-based MVC frameworks, most notably Ruby on Rails (implemented in the Ruby programming language) and CodeIgniter (made in PHP) as mentioned earlier - the specifics will be discussed in subsection \vref{controller_design}.
 
 \subsection{Base concept}
 Ensuring that the security concerns voice by Birken (see appendix \vref{first_interview_birken}, 47:40 and appendix \vref{sec_interview_birken} 54:00) would be addressed was a key factor when considering how to implement the input/output flow through the website.
@@ -53,14 +53,14 @@ The controller \emph{Main} makes use of all of the base functionality of \emph{G
 
 \lstinputlisting[language=PHP]{tex/implementation/controller_example_main.php}
 
-Notice how the controller \textbf{always} defers control to \emph{fallback} that ignores any extra parameters and simply shows the default page. A complete page for display is typically comprised of a header (that contains starting tags for html and body tags, HTML doctype and any global JavaScript and CSS file links), a footer (that closes tags from the header and may contain global footer content) and main content. Note in the code that three views are loaded by \emph{Main}: header.php, main\_stub.php and footer.php. Both header and footer are also used by the controller \emph{Login} and should be used by any \emph{GirafController} that displays a full page to the user (future examples could include account, user and group administration pages).
+Notice how the controller \textbf{always} defers control to \emph{fallback} that ignores any extra parameters and simply shows the default page. A complete page for display is typically comprised of a header (that contains starting tags for \emph{HTML} and body tags, HTML doctype and any global JavaScript and CSS file links), a footer (that closes tags from the header and may contain global footer content) and main content. Note in the code that three views are loaded by \emph{Main}: header.php, main\_stub.php and footer.php. Both header and footer are also used by the controller \emph{Login} and should be used by any \emph{GirafController} that displays a full page to the user (future examples could include account, user and group administration pages).
 
 \subsubsection*{A JSON controller}
 \lstinputlisting[language=PHP]{tex/implementation/controller_example_child.php}
 
 The controller \emph{Child} demonstrates how an already generated web page can request new data in the background in order to reduce page loads, but also introduce a more dynamic page impression. In its current implementation this kind of controller exclusively outputs JSON-encoded data that can be readily consumed by the JavaScript already loaded by the client. It is debatable whether the direct output of JSON-encoded data from the controller (and not an actual view) goes against the MVC pattern.
-The JSON controller type is not a subclass in itself (yet), but is intended to pass simple data structures back to the client, enabling both AJAX from the browser but also enables an external API that can be utilized by other sites for greater utility of the framework.
-
+The JSON controller type is not a subclass in itself (yet), but is intended to pass simple data structures back to the client, enabling both AJAX from the browser but also enables an external API that can be utilized by other sites for greater utility of the framework
+\newline
 \subsubsection*{A sub controller}
 \label{controller_sub}
 \lstinputlisting[language=PHP]{tex/implementation/controller_example_contactbook.php}
@@ -68,7 +68,7 @@ The JSON controller type is not a subclass in itself (yet), but is intended to p
 The controller \emph{Contactbook} is currently the only example of a sub controller and is thus partly intended as a practical example of how new GIRAF-compliant applications can offer customised administrative functions for users beyond a simple control over the settings of the application on a device.
 Of greatest interest (and the feature that most notably makes the controller a ``sub'' type) is the lack of header and footer views, or their equivalents. These controllers are designed to be injected into HTML that is already loaded with the necessary data to run in a browser. Thanks to the flexibility of the DOM it is possible to add stylesheet and javascript files after the document was originally loaded, in principle making it possible to traverse the entire GIRAF site without ever replacing the header and footer sections.
 Of smaller note is the action  \emph{\_list}. In PHP the word ``list'' is reserved and cannot be used for any definitions. However, the name was a prime candidate for the name of an action. A workaround is to utilise \emph{fallback} to check if the requested action is ``list''. If it is, execution is passed to \emph{\_list} instead.
-
+\newline
 \subsection{Implemented controllers}
 Following is a quick list of the controllers currently implemented in GIRAFAdmin. They are divided into the aforementioned three groups: main, sub and JSON controllers.
 
