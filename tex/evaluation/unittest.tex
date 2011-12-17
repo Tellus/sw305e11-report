@@ -4,7 +4,7 @@ SimpleTest was used to create the unit tests for GIRAFAdmin. As noted previously
 \subsection{Test cases}
 % afdække hvad der kan testes med denne test,
 % lav en liste over hvilke dele der bliver testet
-This unit test was made to test some of the classes in the model layer performed as expected. Each test case tests only one class from the model, but the test case contains a test for each function there are in the tested code. The class AllTests is our Test suite and the test cases is listed below with its test functions:
+All tests prepared for chosen classes in the model layer, performed as expected. For each class in the model, one test case was used. Each case contained tests for functions in its corresponding class. The class \emph{AllTests} is our Test suite and the test cases are listed below:
 
 \begin{itemize}
 	\item {\emph{TestGirafNewsPost} tests the class \emph{GirafNewsPost}}
@@ -48,23 +48,23 @@ This unit test was made to test some of the classes in the model layer performed
 \end{itemize}
 
 
-\subsection{Implementing the test}
-The number of files and test cases depend on the desired fidelity and fine control in the entire suite. Everything from one case per assertion or a case for an entire namespace is possible. The unit tests for GIRAFAdmin are treated much like the classes themselves; one file (and test case) per class being tested. Although not currently the case, it is not unlikely that future classes be so large that they make single test cases cumbersome, instead deferring the testing of a large class to an entire suite; delegating a single assertion to a file as suggested beforehand.
+\subsection{Performing the test}
+The number of files and test cases depend on the desired fidelity and fine control in the entire suite. Everything from one case per assertion or a case for an entire namespace is possible. The unit tests for GIRAFAdmin are treated much like the classes themselves; one file (and test case) per class being tested. Although not currently the case, it is not unlikely that future classes may be so large, that they make single test cases cumbersome. Instead one could defer the testing of a large class to an entire suite; delegating a single assertion to a file as suggested beforehand.
 %\todo{tester en klasse pr fil, man kan teste en eller alle filer. Et kode fra unittest, test\_full og en testcase.}
 \\
 \subsubsection*{Test suite AllTests}
 \lstinputlisting[language=PHP]{tex/evaluation/test_full_example_testSuite.php}
-The AllTests test suite is a "catch all" type of suite that simply loads all files of the format "test\_*.php" (where the asterisk is a wildcard) residing in the same directory as AllTests. This simplifies addition of new unit tests, as simply storing a new test case with the appropriately formatted name makes it automatically a part of the full test.
+The \emph{AllTests} test suite loads all files of the format ``test\_*.php'' (where the asterisk is a wildcard) residing in the same directory as \emph{AllTests}. This simplifies addition of new unit test cases, where simply storing a new test case with the appropriately formatted name makes it automatically a part of the full test.
 \\
 
 \subsubsection*{Test case TestGirafUser}
 \lstinputlisting[language=PHP]{tex/evaluation/TestGirafChild_example_testCase.php}
 
-TestGirafUser is a base example of how the MVC framework's model can be tested. Subclasses of GirafRecord generally only depend on other GirafRecord subclasses given the nature of the framework. The model will never go upwards, to the controller and view, in the layers. The only two remaining classes are sql\_helper and the abstract GirafRecord class. Assuming they have both been given comprehensive unit testing, each subclass (like GirafChild) should focus only on testing its own specialisation. This involves testing CRUD (Create, Read, Update, Delete) where applicable as well as associations between subclasses (GirafGroup and GirafUser, for example).
+\emph{TestGirafUser} is a base example of how the MVC framework's model can be tested. Subclasses of \emph{GirafRecord} generally only depend on other \emph{GirafRecord} subclasses given the nature of the framework. The model will never go upwards, to the controller and view, in the layers. The only two remaining classes are \emph{sql\_helper} and the abstract \emph{GirafRecord} class. Assuming they have both been given comprehensive unit testing, each subclass e.g \emph{GirafChild}, should focus only on testing its own specialisation. This involves testing CRUD where applicable, as well as associations between subclasses (\emph{GirafGroup} and \emph{GirafUser}, for example).
 %\todo{We really need to actually implement this focus testing on at least one case. - Joe Jeg forstår ikke kommentaren - René}
 \\
 
 \subsubsection*{Conclusion on the unit test}
 %\todo{"alt fungere på nuværende tidspunkt"}
-While developing, unit tests were conducted and the resulting errors corrected. In current state, we can safely say that all tested code runs as it should.
+While developing, unit tests were conducted and the resulting errors corrected. In current state, we can safely say that all tested code performs as it should.
 %After the first run of the unit test a few errors were corrected, and in the end we can conclude that the tested code run as it should.
