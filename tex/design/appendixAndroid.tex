@@ -40,7 +40,7 @@ The version string consists of 3 parts of version numbers, which indicates the s
 If a valid version is detected, the server answers ``OK'' and command messages can now be sent from the client.
 
 \section{Client design}
-\label{ClientDesgin}
+\label{ClientDesign}
 The client is designed as a local service based upon the Remote Messenger Service Sample provided by the Android development community\cite{AndDevel3}, which unlocks some features of the android subsystem. An example would be the ability to send notifications to the user and place them in the android notification bar.
 
 The client starts together with the GIRAF Launcher on the device and pulls the server for updates with a frequency of 30 minutes. This frequency has been chosen due to extend the battery-life of the Android device. However, even though it is not a planned feature, the push functionality would greatly lower battery consumption. In some scenarios it is likely to imagine that many hours will pass before any updated data will be needed to be synchronized. To save battery life, and to receive updates as they get posted, such functionality could be implemented. It is not planned in milestone 1.0 since it is not a critical feature for the system to work properly since it primarily is an optimization and does not add any extra functionality at this moment. 
