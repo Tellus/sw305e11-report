@@ -8,17 +8,17 @@ This section describes how the model was implemented into GIRAFAdmin's MVC archi
 The class diagram in appendix \ref{diagramAppendix} shows the relation between the \emph{GirafRecord} class and its subclasses.
 
 \subsection{Dynamic shaping}
-Thanks to the dynamic typing properties of PHP, object of classes can be modified during run-time. PHP also has several so-called ``magic methods'' that can increase the flexibility of classes. Three of these, two for properties and one for methods, was applied to dynamically shape objects to the tables they were representing.
+Thanks to the dynamic typing properties of PHP, object of classes can be modified during run-time. PHP also has several so-called ``magic methods'' that can increase the flexibility of classes\cite{MagicMethods}. Three of these, two for properties and one for methods, was applied to dynamically shape objects to the tables they were representing.
 
 \subsubsection*{Properties}
 PHP defines the class methods \emph{\_\_get} and \emph{\_\_set}. They are called whenever a non-existing member is requested. For \emph{GirafRecord}, this means that although table columns are not defined as members in the class, they are available at run-time. \emph{\_\_get} and \emph{\_\_set} perform lookups in a private array of key-value pairs that match the table's structure, and registers any changes to the data.
-Both row structure and data are returned as an associative array through PHP's MySQL functionality, and distilled into the internal data array where \emph{\_\_get} and \emph{\_\_set} and work with it.
+Both row structure and data are returned as an associative array through PHP's MySQL functionality, and placed into the internal data array where \emph{\_\_get} and \emph{\_\_set} and work with it.
 
 \subsubsection*{Methods}
 The methods \emph{\_\_call} and \emph{\_\_callStatic} are defined with similar usages as \emph{\_\_get} and \emph{\_\_set}, only with object and class methods, respectively. \emph{GirafRecord} overrides \emph{\_\_callStatic} to offer an instance-retrieval method that matches a subclass. This is merely a proxy for \emph{GirafRecord::getInstance}, but makes for slightly more readable code. For example, the class \emph{GirafUser} automatically defines \emph{getGirafUser}, \emph{GirafGroup} defines \emph{getGirafGroup} etc.
 
 \subsection{CRUD}
-\emph{GirafRecord} only defines functionality for creating, reading and updating records in the current implementation. Due to the complications of retaining key integrity across table associations, row deletion was never implemented. Although the InnoDB engine (used in all the Giraf database tables) supports this integrity, relying on that implementation would rule out the use of any other database system or even MySQL engine, severely reducing the portability of the system.
+\emph{GirafRecord} only defines functionality for creating, reading and updating records in the current implementation. Due to the complications of retaining key integrity across table associations, row deletion was never implemented. Although the InnoDB engine (used in all the \emph{GIRAF database} tables) supports this integrity, relying on that implementation would rule out the use of any other database system or even MySQL engine, severely reducing the portability of the system.
 
 \subsection*{Create}
 Creating a new record simply involves creating a new instance of the desired record, settings its values and calling the commit method. Each \emph{GirafRecord} maintains a private array of which fields have been changed since initialisation. During creation of a new record only these values are set, any unset values are set to null.
