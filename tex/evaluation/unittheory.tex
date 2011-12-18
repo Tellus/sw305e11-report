@@ -1,7 +1,7 @@
 \section{Unit test theory}
 % Formål med unittest, hvad kan unit test bruges til 
 % basal termenoligy, der findes test opensource => simple test  
-A unit test is a testing method that can be used to assess if already written code works as intended. In each unit test case, an assumption has been made and if the assumption turns out to be wrong then the code has failed. The developer will then fix the bug and try again until the assumption is true, which then means the unit test passes. A unit test should only test a particular method or function within the tested code. (kilde: The Art of Unit Testing: with Examples in .NET, Roy Osherove, Manning Publications, 2009)
+A unit test is a testing method that can be used to assess if already written code works as intended. In each unit test case, an assumption has been made and if the assumption turns out to be wrong then the code has failed. The developer will then fix the bug and try again until the assumption is true, which then means the unit test passes. A unit test should only test a particular method or function within the tested code.
 To make a good unit test this should be followed: according to Roy Osherove\cite{AOUT}: 
 \begin{itemize}
 	\item It should be automated and repeatable
@@ -15,20 +15,20 @@ To make a good unit test this should be followed: according to Roy Osherove\cite
 \subsection{Reasons for using unit test}
 A unit test is performed because the developer wants to know if the code runs as it is supposed to.  An advantage of unit testing is that the test can run separately from the application, so that parts of the application can be tested in isolation\cite{UTF}. Another advantage is that the developer can run several test cases together or one-by-one and later, in the development process, the developer can reuse the test with little or no modification.  
 
-A unit test can only be used to determine if the code is good and working, and if the test suite of unit test has a high code coverage and many assertion then it is an indication of that the code is of good quality. Different testing methods must be applied to certain areas, for example usability.
+A unit test can only be used to determine if the code is good and working. If code passes a test by a test suite with high code coverage and many assertions, it is an indication of good quality code. Different testing methods must be applied to certain areas, for example usability.
 
 \subsection{Unit test frameworks}
-The advantage of using a unit test framework is that the developer does not have to program the entire unit test, which would be very time-consuming. Unit test frameworks help developers to write a test more quickly and can run the test and review the result more easily\cite{UTF}.  
+The advantage of using a unit test framework is that the developer does not have to program the entire unit test, which would be very time-consuming. Unit test frameworks help developers to prepare a test more quickly, run the test and review the result more easily\cite{UTF}.  
 
-Several unit testing frameworks exist for various programming languages and development platforms. These frameworks are generally known as xUnit. such as CppUnit for C++, JUnit for Java, NUnit for .NET among the xUnits\cite{UTF} and for PHP coding language is SimpleTest also a unit testing framework.
+Several unit testing frameworks exist for various programming languages and development platforms. The frameworks: CppUnit for C++, JUnit for Java, NUnit for .NET, are known as xUnit. Among the xUnits\cite{UTF}, is SimpleTest PHP coding language  also a unit testing framework.
 
-\subsection{}
-Before writing the test the developer makes an assumption of how the code behaves with a given input and then expects a certain output, this assumption is then validated in the unit test. A unit test consists of three parts\cite{AOUT}: 
+\subsection{Unit test case}
+Before performing a test the developer makes an assumption of how the code behaves with a given input and then expects a certain output, this assumption is then validated in the unit test. A unit test consists of three phases\cite{AOUT}: 
 \begin{itemize}
 	\item Arrange
 	\item Act
 	\item Assert
 \end{itemize}
 
-In Arrange objects are created and made ready before Act, which calls the code that is being tested. Thereafter, in Assert, the premade assumptions about the return value of the tested code are validated. A unit test framework contains assert classes that have several methods; the developer can use to verify the code.  E.g. it can check if the output is null or if an exception has been thrown.
+In the ``Arrange'' phase, objects are created and made ready before the ``Act'' phase, which calls the code that is being tested. In the ``Assert'' phase, the premade assumptions, about the return value of the tested code, are validated. A unit test framework contains assert classes that have several methods, which the developer can use to verify the code. It can e.g. check if the output is null or if an exception has been thrown.
 

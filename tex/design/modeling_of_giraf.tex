@@ -1,13 +1,15 @@
-\section{Modeling of Giraf administration}
-To understand how users, children and applications will be represented and connected in the system, a model  has been made with only the more important classes included. This model is in Figure \vref{fig:classOversigt}. The application we are creating is called \emph{GIRAF Administration} which then would have one user and many applications. As shown in the figure the ``User'' would either be a \emph{Parent} or a \emph{Kindergarten teacher}. In the model the user has a connection with a child, who also has a connection to its \emph{Child's mobile device}.
+\section{Modeling of GIRAF-W-11}
+To understand how users, children and applications will be represented and connected in the system, a model has been made with only the most important classes included. This model is in figure \vref{fig:classOversigt}. The system we are developing, is called \emph{GIRAF-W-11} which then would have one user and many applications. As shown in the figure the \emph{User} would either be a \emph{Parent} or a \emph{Kindergarten teacher}. In the model the user has a connection with a \emph{Child}, who also has a connection to its \emph{Mobile device}.
 
-In reality it is possible for the child to have more than one device and that has been taken into account. This also means that there is an indirect connection between the \emph{User} and \emph{Child's mobile device} that has "\emph{Giraf mobile application} installed, which should be administered by the \emph{user} through the \emph{GIRAF administration}. That means, that to administer the mobile application, the \emph{user}'s \emph{GIRAF administration} must have a corresponding version of \emph{GIRAF application administration}. However, some of the \emph{GIRAF administration applications} do not have a mobile version which makes them a \emph{User application}. This is all represented in the model in Figure \vref{fig:classOversigt}.
+In reality it is possible for the child to have more than one device and that has been taken into account. This also means that there is an indirect connection between the \emph{User} and \emph{Mobile device}, which has some \emph{GIRAF mobile application} installed. To administer a \emph{GIRAF mobile application} through \emph{GIRAF-W-11}, the corresponding \emph{GIRAF application administrator} must be used.
+
+ However, those \emph{GIRAF administration applications} that do not exist for mobile devices, are considered a \emph{User application}. This is all represented in the model in figure \vref{fig:classOversigt}.
 
 
 \begin{figure}[!ht]
 	\centering
 		\includegraphics[width=1.00\textwidth]{img/classOversigt.jpg}
-	\caption{Giraf administration program}
+	\caption{GIRAF-W-11}
 	\label{fig:classOversigt}
 \end{figure}
 \newpage

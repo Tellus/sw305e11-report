@@ -1,19 +1,18 @@
 %under chapter reflection som 1 section
 \section{Security}
 
-
-\subsection{Security strength }
 Although high-end security features were not implemented, the system's structure supports more complex implementations.
 
-Password hashing and intentionally vague error messages on failed login are among the simpler approaches to hampering malicious usage, while the funnelled access approach to the framework forces all users to go through several layers of access control before they are presented with their final data.
+Password hashing and intentionally vague error messages on failed login are among the simpler approaches to hampering malicious usage, while the funneled access approach to the framework forces all users to go through several layers of access control before they are presented with their final data.
 
 Beyond this, placing resources outside of the web server's root keeps it out of reach from regular HTTP requests while still allowing the scripts to output the data to a client, if authorised. Although any registered user can in principle access any resource at this time, the implementation itself allows for changing the authorisation logic without changing the API considerably.
 
 \subsection{Security weaknesses}
 GIRAFAdmin was never comprehensively tested for injection attacks. The current code base was given a single pass of string escapes (basic user input security). Allowing higher-level developers to directly construct SQL statements is the primary flaw (as it is impossible to guarantee that developers will correctly escape the statement). Instead, a move to using safer intermediaries (such as parametrized queries) should optimally only require refactoring in the model and would increase protection from user attacks considerably. 
 
-Storing confidential data in locations not under the web server's document root gives the site code full control of access to those resources. An authentication procedure was in late concept but never implemented - instead, all users have access to all resources even if they were not intended to have access to them, although the access is not obvious (users must request the resources through specific controllers in the site URL). Thus some information about the architecture is necessary - since the project is open-source and hosted as a public project on Github.com, this requires very little research. 
+Storing confidential data in locations not under the web server's document root gives the site code full control of access to those resources. An authentication procedure was in the late concept stage but never implemented - instead, all users have access to all resources even if they were not intended to have access to them, although the access is not obvious (users must request the resources through specific controllers in the site URL). Thus some information about the architecture is necessary - since the project is open-source and hosted as a public project on Github.com, this requires very little research. 
 
-If the user is login then user can find others private pictures if the user know the path to the picture. Furthermore He/she would be able to get access to other users sensitive data although the user would need some insider knowledge of the system.
-This would be in violation against the personal data law.
+%%%%%% This parapgraph is unnecessary, since these aspects have been covered in previous ones %%%%%
+%If the user is login then user can find others private pictures if the user know the path to the picture. Furthermore He/she would be able to get access to other users sensitive data although the user would need some insider knowledge of the system.
+%This would be in violation against the personal data law.
 
