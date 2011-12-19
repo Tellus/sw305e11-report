@@ -1,23 +1,23 @@
 \chapter{Problem analysis}
-This chapter deals with the reports of previous GIRAF projects by other student groups. By collecting information from them, a better understanding of the initial problem can be achieved and an improved analysis of the current problem can be performed. An interview with Kristine Niss-Henriksen from Birk was also conducted. The chapter is concluded with the problem formulation.
+This chapter deals with the reports of previous GIRAF projects by other student groups. By collecting information from them, a better understanding of the initial problem can be achieved and an improved analysis of the current problem can be performed. An interview with Kristine Niss-Henriksen from Birken was also conducted. The chapter is concluded with the problem formulation.
 
 \section{The GIRAF multi-project}
-This project is based upon the bachelor multi-project from spring 2011, in which four groups developed GIRAF-A-11. This area of the concept was to make an \emph{Android}-based software system, with the purpose of helping autistic children, their parents and kindergarten teachers. The intention is to give every child a mobile device for everyday use. The parents and kindergarten teachers should then be able to administrate applications within the GIRAF system. Furthermore the system should make it easier for the child to communicate with the parents or kindergarten teachers. 
+This project is based upon the bachelor multi-project from spring 2011, in which four groups developed GIRAF-A-11. Their concept was to make an \emph{Android}-based software system, with the purpose of helping autistic children, their parents and kindergarten teachers. The intention is to give every child a mobile device for everyday use. The parents and kindergarten teachers should then be able to administrate applications within the GIRAF system. Furthermore the system should make it easier for a child to communicate with their parents or kindergarten teachers. 
 
 \subsection{FACTORS for GIRAF-A-11}
-The FACTORS criteria are used to support the preparation of a system definition. In the following, the FACTORS for GIRAF-A-11 will be covered\cite{giraffactors}. The definition of each criterion is based on method Object Oriented Analysis \& Design\cite{OOAD}.
+The FACTORS criteria are used to support the preparation of a system definition. In the following sections, the FACTORS for GIRAF-A-11 will be covered\cite{giraffactors}. The definition of each criterion is based on ``Object Oriented Analysis \& Design''\cite{OOAD}.
 
-\subsubsection{Functionality} 
+\subsubsection*{Functionality} 
 Describes the functions of the system that support the application domain tasks. That means, defining what the system is capable of doing.
 \begin{itemize}
 	\item The system should offer installation of new applications and make it possible to administrate common settings as necessary.
 	\item The system should mask the normal functionalities of the unit from the user.
-	\item Furthermore, the system should offer the ability to control the usage of, and access to, system and user profile settings as well as applications according to the current time and location of the unit.
+	\item The system should offer the ability to control the usage of, and access to, system and user profile settings as well as applications according to the current time and location of the unit.
 	\item The system should be delivered with a number of pre-installed applications which are user-customizable.
 	\item The system should have a framework with objects like a calendar, ready for development of new, GIRAF-compliant software.
 \end{itemize}
 
-\subsubsection{Application Domain} 
+\subsubsection*{Application Domain} 
 Concerns those parts of an organization which administrate, monitor, or control a
 problem domain.
 \begin{itemize}
@@ -25,23 +25,23 @@ problem domain.
 	\item Parents and kindergarten teachers will be in charge of administrating the system.
 \end{itemize}
 
-\subsubsection{Conditions} 
+\subsubsection*{Conditions} 
 Covers conditions under which the system will be developed and used.
 \begin{itemize}
 	\item The system should be simple and intuitive to use. 
 	\item The system should be developed so it is customizable to the individual child and its disabilities.
-	\item Furthermore, it should allow parents to limit the functionality of the system. 
+	\item It should allow parents to limit the functionality of the system. 
 	\item To allow other application developers to continue to develop the system and further applications, the system should be maintainable.
 \end{itemize}
 
-\subsubsection{Technology} 
+\subsubsection*{Technology} 
 Covers the technology used to develop the system and the technology on which the system will run.
 \begin{itemize}
 	\item The system must run on \emph{Android} touch devices such as smartphones and tablets. Different hardware should be supported, although it is required that the units are running Android version 2.2 or newer. 
 	\item The system should mainly be developed using Java and the Android SDK version 8 for Android version 2.2.
 \end{itemize}
 
-\subsubsection{Objects} 
+\subsubsection*{Objects} 
 Describes the main objects in the problem domain.
 \begin{itemize}
 	\item A smartphone or tablet device. 
@@ -51,31 +51,31 @@ Describes the main objects in the problem domain.
 	\item Administrative application for a stationary device.
 \end{itemize}
 
-\subsubsection{Responsibility} 
+\subsubsection*{Responsibility} 
 Covers the system's overall responsibility in relation to its context. That is, how the system would interact with the tasks to be solved using the system.
 \begin{itemize}
 	\item The system should act as an assistive tool by providing pre-installed applications developed to aid and entertain the small-aged and disabled children using the system. 
-	\item Furthermore, the system should provide the opportunity to install other third-party applications. 
+	\item The system should provide the opportunity to install other third-party applications. 
 	\item In accordance with the location, user profile and global settings, a home screen should control which applications the user is allowed to access.
 \end{itemize}
 
 \subsection{Multi-project system definition}
 
 \begin{quotation}
-``A simple and intuitive module based single user system for Android touch devices, such as smart-phones and tablets. By masking the normal interface of an Android device, the device should offer functionality that is suitable for the intended user.
-The system should be responsible for aiding and entertaining children with limited mental capabilities due to mental handicap and/or age, having a difficult time handling the complexity of a normal smart-phone or tablet OS. Guardians should be able to administrate the system by controlling selected application-, system and user-specific settings through an administration interface on a stationary device. Based on these settings, as well as the location of the unit, a home menu should be responsible for providing access to applications that conforms to the current settings and the state of the system. It should be possible for any third party to develop and provide additional applications to the system. Beyond that, the system must be delivered with a set of pre-installed applications consisting of a visual, day-to-day, planning tool, and a PECS application. The system should be developed using Java and the recent version of the Android SDK. It is expected that the system supports Android 2.2. Furthermore, it is expected that the system is maintainable to such a degree, that it allows other developers to keep developing the system as well as applications to the system after this semester.''
+\emph{A simple and intuitive module based single user system for Android touch devices, such as smart-phones and tablets. By masking the normal interface of an Android device, the device should offer functionality that is suitable for the intended user.
+The system should be responsible for aiding and entertaining children with limited mental capabilities due to mental handicap and/or age, having a difficult time handling the complexity of a normal smart-phone or tablet OS. Guardians should be able to administrate the system by controlling selected application-, system and user-specific settings through an administration interface on a stationary device. Based on these settings, as well as the location of the unit, a home menu should be responsible for providing access to applications that conforms to the current settings and the state of the system. It should be possible for any third party to develop and provide additional applications to the system. Beyond that, the system must be delivered with a set of pre-installed applications consisting of a visual, day-to-day, planning tool, and a PECS application. The system should be developed using Java and the recent version of the Android SDK. It is expected that the system supports Android 2.2. Furthermore, it is expected that the system is maintainable to such a degree, that it allows other developers to keep developing the system as well as applications to the system after this semester.}
 \end{quotation}
 Citation from the system definition in the Administration Module for GIRAF.\cite{giraffactors}
 
 \subsection{The project result}
-From researching previous groups' reports, the problem addressed seems to be the autistic child's need for structure in everyday life. To achieve this, they digitized several tools. They are as follows:
+From researching previous groups' reports, the problem addressed seems to be the autistic child's need for structure in everyday life. To achieve this, they digitised several tools. They are as follows:
 \begin{itemize}
-	\item a picture communication program called DigiPECS
-	\item a visual schedule called aSchedule
+	\item A picture communication program called DigiPECS
+	\item A visual schedule called aSchedule
 \end{itemize}
 
 To run this on a mobile device, a launcher was developed specifically for the GIRAF-compliant applications and a simple interface that masks the underlying Android system was implemented. A specific marketplace for applications was designed and partially implemented; supporting both installation and updating of applications. The launcher also makes an administrative environment available to the parent or kindergarten teacher where they can install applications, edit settings and generally administer the device.
-The tools that were digitised, already exist, they simplify and make daily-life structure easier as well as help children, that are slow to develop, with communication.
+The tools that were digitised, already exist, they simplify and make daily-life structure easier as well as help children, that are slow to develop, with communication.\cite{giraffactors}
 
-The group working on the administrator environment concluded that an administration interface for a stationary device (such as laptop or desktop PC's) would be a natural area for further development. This is the starting point for the current project.
-Thus the focus has shifted away from the children themselves and onto the kindergarten teachers and parents. Here, the administration interface should help the parents and kindergarten teachers to administer and manage the mobile devices using the GIRAF-administration system.\cite{giraffactors}
+The group working on the administration environment concluded that an administration interface for a stationary device (such as laptop or desktop PCs) would be a natural area for further development. This is the starting point for the current project.
+Thus the focus has shifted away from the children themselves and onto the kindergarten teachers and parents. Here, the administration interface should help the parents and kindergarten teachers to administrate and manage the mobile devices.\cite{giraffactors}
