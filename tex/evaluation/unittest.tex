@@ -58,7 +58,7 @@ The \emph{AllTests} test suite loads all files of the format ``test\_*.php'' (wh
 \\
 
 \subsubsection*{Test case TestGirafUser}
-\lstinputlisting[language=PHP]{tex/evaluation/TestGirafChild_example_testCase.php}
+\lstinputlisting[language=PHP]{tex/evaluation/test_user_example_testCase.php}
 
 \emph{TestGirafUser} is a base example of how the MVC framework's model can be tested. Subclasses of \emph{GirafRecord} generally only depend on other \emph{GirafRecord} subclasses given the nature of the framework. The model will never go upwards, to the controller and view, in the layers. The only two remaining classes are \emph{sql\_helper} and the abstract \emph{GirafRecord} class. Assuming they have both been given comprehensive unit testing, each subclass e.g \emph{GirafChild}, should focus only on testing its own specialisation. This involves testing CRUD where applicable, as well as associations between subclasses (\emph{GirafGroup} and \emph{GirafUser}, for example).
 %\todo{We really need to actually implement this focus testing on at least one case. - Joe Jeg forstår ikke kommentaren - René}
